@@ -43,16 +43,11 @@ public class Tester {
 			o.setMode(PinMode.DIGITAL_OUTPUT);
 			o.setState(PinState.LOW);
 		}
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
 		for (GpioPinDigitalOutput o : outs) {
 			System.out.println("turned on: " + o.getName());
 			o.setState(true);
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
