@@ -2,6 +2,7 @@ package com.sinius15.pi;
 
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinMode;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
@@ -39,13 +40,19 @@ public class Tester {
 		};
 		for (GpioPinDigitalOutput o : outs) {
 			o.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+			o.setMode(PinMode.DIGITAL_OUTPUT);
+			o.setState(PinState.LOW);
 		}
-		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		for (GpioPinDigitalOutput o : outs) {
 			System.out.println("turned on: " + o.getName());
 			o.setState(true);
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
