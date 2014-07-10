@@ -28,7 +28,6 @@ try:
   for i in pinList:
       GPIO.output(2, GPIO.LOW)
       time.sleep(SleepTime);
-  break
 
 
 	
@@ -41,7 +40,6 @@ try:
     for i in pinList:
         GPIO.output(i, GPIO.HIGH)
         time.sleep(SleepTime);
-    break
 
   print "Good bye!"
 
