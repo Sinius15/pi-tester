@@ -45,15 +45,14 @@ public class Tester {
 		}
 		for (GpioPinDigitalOutput o : outs) {
 			System.out.println("turned on: " + o.getName());
-			o.setState(true);
+			o.setPullResistance(PinPullResistance.PULL_DOWN);
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			o.setState(false);
+			o.setPullResistance(PinPullResistance.PULL_UP);
 		}
-		
 		gpio.shutdown();
 		
 	}
