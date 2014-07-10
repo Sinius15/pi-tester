@@ -25,19 +25,10 @@ count = 1
 try:
   GPIO.output(2, GPIO.LOW)
   time.sleep(SleepTime);
-  GPIO.output(4, GPIO.LOW)
-  time.sleep(SleepTime);
-  GPIO.output(3, GPIO.LOW)
-  time.sleep(SleepTime);
-  GPIO.output(17, GPIO.LOW)
-  time.sleep(SleepTime);
-  GPIO.output(27, GPIO.LOW)
-  time.sleep(SleepTime);
-  GPIO.output(22, GPIO.LOW)
-  time.sleep(SleepTime);
-  GPIO.output(10, GPIO.LOW)
-  time.sleep(SleepTime);
-  GPIO.output(9, GPIO.LOW)
+  for i in pinList:
+      GPIO.output(2, GPIO.LOW)
+      time.sleep(SleepTime);
+  break
 
 
 	
@@ -50,7 +41,6 @@ try:
     for i in pinList:
         GPIO.output(i, GPIO.HIGH)
         time.sleep(SleepTime);
-
     break
 
   print "Good bye!"
