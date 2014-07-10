@@ -40,8 +40,7 @@ public class Tester {
 		};
 		for (GpioPinDigitalOutput o : outs) {
 			o.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-			o.setMode(PinMode.DIGITAL_OUTPUT);
-			o.setState(PinState.LOW);
+			o.setPullResistance(PinPullResistance.OFF);
 		}
 		for (GpioPinDigitalOutput o : outs) {
 			System.out.println("turned on: " + o.getName());
