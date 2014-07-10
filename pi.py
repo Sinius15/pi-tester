@@ -23,10 +23,8 @@ count = 1
 # main loop
 
 try:
-  GPIO.output(2, GPIO.LOW)
-  time.sleep(SleepTime);
   for i in pinList:
-      GPIO.output(2, GPIO.LOW)
+      GPIO.output(i, GPIO.LOW)
       time.sleep(SleepTime);
 
 
