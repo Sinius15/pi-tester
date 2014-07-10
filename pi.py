@@ -18,7 +18,8 @@ GPIO.setup(22, GPIO.OUT)
 print "done setting up!" 
 
 for i in pinList: 
-	GPIO.output(i, GPIO.HIGH)
+    print "1"
+    GPIO.output(i, GPIO.HIGH)
     print "2"
 
 # time to sleep between operations in the main loop
