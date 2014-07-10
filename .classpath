@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="libs/pi4j/pi4j-core.jar"/>
+	<classpathentry kind="lib" path="libs/pi4j/pi4j-core.jar" sourcepath="libs/pi4j/pi4j-core-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/pi/libs/pi4j/pi4j-core-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="libs/pi4j/pi4j-device.jar"/>
 	<classpathentry kind="lib" path="libs/pi4j/pi4j-example.jar"/>
 	<classpathentry kind="lib" path="libs/pi4j/pi4j-gpio-extension.jar"/>
