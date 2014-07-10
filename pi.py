@@ -11,13 +11,11 @@ pinList = [4, 17, 22]
 # loop through pins and set mode and state to 'low'
 
 for i in pinList: 
-	GPIO.setup(i, GPIO.OUT) 
 	GPIO.output(i, GPIO.HIGH)
 
 # time to sleep between operations in the main loop
 
 SleepTime = 1
-SleepTimeL = 10
 count = 1
 
 # main loop
