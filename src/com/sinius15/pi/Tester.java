@@ -1,59 +1,54 @@
 package com.sinius15.pi;
 
+import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinMode;
-import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
-import com.pi4j.io.gpio.impl.GpioControllerImpl;
 
 public class Tester {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
-		GpioControllerImpl gpio = (GpioControllerImpl) GpioFactory.getInstance();
+		System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 		
-		GpioPinDigitalOutput[] outs = new GpioPinDigitalOutput[] {
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "gpio 0"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "gpio 1"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "gpio 2"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "gpio 3"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "gpio 4"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "gpio 5"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "gpio 6"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "gpio 7"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_09, "gpio 9"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_10, "gpio 10"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_11, "gpio 11"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_12, "gpio 12"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_13, "gpio 13"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_14, "gpio 14"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_15, "gpio 15"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_16, "gpio 16"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_17, "gpio 17"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_18, "gpio 18"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_19, "gpio 19"),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_20, "gpio 20"),
+		// create gpio controller
+		GpioController gpio = GpioFactory.getInstance();
 		
-		};
-		for (GpioPinDigitalOutput o : outs) {
-			o.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-			o.setPullResistance(PinPullResistance.OFF);
-		}
-		for (GpioPinDigitalOutput o : outs) {
-			System.out.println("turned on: " + o.getName());
-			o.setPullResistance(PinPullResistance.PULL_DOWN);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			o.setPullResistance(PinPullResistance.PULL_UP);
-		}
+		// provision gpio pin #01 as an output pin and turn on
+		final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED",
+				PinState.HIGH);
+		System.out.println("--> GPIO state should be: ON");
+		
+		Thread.sleep(5000);
+		
+		// turn off gpio pin #01
+		pin.low();
+		System.out.println("--> GPIO state should be: OFF");
+		
+		Thread.sleep(5000);
+		
+		// toggle the current state of gpio pin #01 (should turn on)
+		pin.toggle();
+		System.out.println("--> GPIO state should be: ON");
+		
+		Thread.sleep(5000);
+		
+		// toggle the current state of gpio pin #01 (should turn off)
+		pin.toggle();
+		System.out.println("--> GPIO state should be: OFF");
+		
+		Thread.sleep(5000);
+		
+		// turn on gpio pin #01 for 1 second and then off
+		System.out.println("--> GPIO state should be: ON for only 1 second");
+		pin.pulse(1000, true); // set second argument to 'true' use a blocking
+								// call
+		
+		// stop all GPIO activity/threads by shutting down the GPIO controller
+		// (this method will forcefully shutdown all GPIO monitoring threads and
+		// scheduled tasks)
 		gpio.shutdown();
-		
 	}
 	
 }
