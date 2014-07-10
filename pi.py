@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 
 # init list with pin numbers
 
-pinList = [2, 4, 3]
+pinList = [4, 17, 22]
 
 # loop through pins and set mode and state to 'low'
 
@@ -16,7 +16,7 @@ for i in pinList:
 
 # time to sleep between operations in the main loop
 
-SleepTime = 0.5
+SleepTime = 1
 SleepTimeL = 10
 count = 1
 
@@ -30,12 +30,8 @@ try:
       time.sleep(SleepTime);
 
 
-	
-
-  time.sleep(SleepTimeL)
-
   while (count > 0):
-#    pinList.reverse()
+    pinList.reverse()
 
     for i in pinList:
         GPIO.output(i, GPIO.HIGH)
