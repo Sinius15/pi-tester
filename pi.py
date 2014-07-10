@@ -9,6 +9,13 @@ GPIO.setmode(GPIO.BCM)
 pinList = [4, 17, 22]
 
 # loop through pins and set mode and state to 'low'
+print "setting up 4"
+GPIO.setup(4, GPIO.OUT) 
+print "setting up 17"
+GPIO.setup(17, GPIO.OUT)
+print "setting up 22" 
+GPIO.setup(22, GPIO.OUT)
+print "done setting up!" 
 
 for i in pinList: 
 	GPIO.output(i, GPIO.HIGH)
