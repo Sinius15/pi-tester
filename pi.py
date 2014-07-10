@@ -18,7 +18,6 @@ GPIO.setup(22, GPIO.OUT)
 print "done setting up!" 
 
 for i in pinList: 
-    print "1"
 	GPIO.output(i, GPIO.HIGH)
     print "2"
 
