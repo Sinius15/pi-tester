@@ -23,7 +23,7 @@ public class WireManager implements Closeable{
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "gpio 3", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "gpio 4", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "gpio 5", PinState.LOW),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_10, "gpio 10", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "gpio 06", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "gpio 7", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8", PinState.LOW),
 		
@@ -33,7 +33,7 @@ public class WireManager implements Closeable{
 	public void setWireState(int i, boolean state){
 		if(i < 1 || i > 8)
 			return;
-		outs[i-1].setState(true);
+		outs[i-1].setState(state);
 	}
 	
 	public void toggleState(int i){
