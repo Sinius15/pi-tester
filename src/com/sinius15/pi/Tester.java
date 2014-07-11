@@ -1,50 +1,64 @@
 package com.sinius15.pi;
 
-import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinMode;
+import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.impl.GpioControllerImpl;
 
 public class Tester {
 	
-public static void main(String[] args) throws InterruptedException {
-        
-        System.out.println("<--Pi4J--> GPIO Control Example ... started.");
-        
-        // create gpio controller
-        final GpioController gpio = GpioFactory.getInstance();
-        
-        // provision gpio pin #01 as an output pin and turn on
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
-        System.out.println("--> GPIO state should be: ON");
-        
-        Thread.sleep(5000);
-        
-        // turn off gpio pin #01
-        pin.low();
-        System.out.println("--> GPIO state should be: OFF");
-
-        Thread.sleep(5000);
-
-        // toggle the current state of gpio pin #01 (should turn on)
-        pin.toggle();
-        System.out.println("--> GPIO state should be: ON");
-
-        Thread.sleep(5000);
-
-        // toggle the current state of gpio pin #01  (should turn off)
-        pin.toggle();
-        System.out.println("--> GPIO state should be: OFF");
-        
-        Thread.sleep(5000);
-
-        // turn on gpio pin #01 for 1 second and then off
-        System.out.println("--> GPIO state should be: ON for only 1 second");
-        pin.pulse(1000, true); // set second argument to 'true' use a blocking call
-        
-        // stop all GPIO activity/threads by shutting down the GPIO controller
-        // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-        gpio.shutdown();
-    }
+	public static void main(String[] args) throws InterruptedException {
+		
+		GpioControllerImpl gpio = (GpioControllerImpl) GpioFactory.getInstance();
+		
+		GpioPinDigitalOutput[] outs = new GpioPinDigitalOutput[] {
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "gpio 1", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "gpio 2", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "gpio 3", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "gpio 4", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "gpio 5", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "gpio 6", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "gpio 7", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8", PinState.LOW),
+		
+		};
+		for (GpioPinDigitalOutput o : outs) 
+			o.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+		
+		gpio.setState(true, outs);
+		Thread.sleep(500);
+		
+		gpio.setState(false, outs);
+		Thread.sleep(500);
+		
+		gpio.setState(true, outs);
+		Thread.sleep(500);
+		
+		gpio.setState(false, outs);
+		Thread.sleep(500);
+		
+		gpio.setState(true, outs);
+		Thread.sleep(500);
+		
+		gpio.setState(false, outs);
+		Thread.sleep(500);
+		
+		for(int i = 0; i <= outs.length; i++){
+			try{
+				outs[i].setState(true);
+			}catch (Exception e) {}
+			try{
+				outs[i-1].setState(false);
+			}catch (Exception e) {}
+			Thread.sleep(500);
+		}
+		
+		gpio.shutdown();
+		
+	}
+	
+	
 }
