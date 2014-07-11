@@ -20,7 +20,7 @@ public class Tester {
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "gpio 3", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "gpio 4", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "gpio 5", PinState.LOW),
-				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "gpio 6", PinState.LOW),
+				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_10, "gpio 10", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "gpio 7", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8", PinState.LOW),
 		
