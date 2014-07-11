@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 
 public class LightServer implements Runnable{
 	
-	int port = 3443;
+	public static final int port = 3443;
 	ServerSocket serverSocket;
 	
 	public LightServer(){

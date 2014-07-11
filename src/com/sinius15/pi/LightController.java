@@ -13,7 +13,7 @@ public class LightController {
 	public static WireManager wireManager;
 	
 	public static void main(String[] args) throws InterruptedException {
-		//wireManager = new WireManager();
+		wireManager = new WireManager();
 		ligtController = new LightController();
 	}
 	
