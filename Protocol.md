@@ -19,9 +19,11 @@ Server requests
 
 Respons list
 =========
-* error_invalid_argument
-* succes
-* succes_state_on
-* succes_state_off
-* state_on
-* state_off
+* ``error_invalid_argument``
+* ``error_invalid_request``
+* ``error_internal_server_problem``
+* ``succes``
+* ``succes_state_on``
+* ``succes_state_off``
+* ``state_on``
+* ``state_off``
