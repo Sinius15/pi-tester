@@ -1,20 +1,23 @@
 package com.sinius15.pi;
 
+import java.io.Closeable;
+import java.io.IOException;
+
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinMode;
-import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 
-public class Tester {
+public class WireManager implements Closeable{
 	
-	public static void main(String[] args) throws InterruptedException {
+	private GpioPinDigitalOutput[] outs;
+	private GpioControllerImpl gpio;
+	
+	public WireManager(){
+		gpio = (GpioControllerImpl) GpioFactory.getInstance();
 		
-		GpioControllerImpl gpio = (GpioControllerImpl) GpioFactory.getInstance();
-		
-		GpioPinDigitalOutput[] outs = new GpioPinDigitalOutput[] {
+		outs = new GpioPinDigitalOutput[] {
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "gpio 1", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "gpio 2", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "gpio 3", PinState.LOW),
@@ -25,40 +28,43 @@ public class Tester {
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8", PinState.LOW),
 		
 		};
-		for (GpioPinDigitalOutput o : outs) 
-			o.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-		
-		gpio.setState(true, outs);
-		Thread.sleep(500);
-		
-		gpio.setState(false, outs);
-		Thread.sleep(500);
-		
-		gpio.setState(true, outs);
-		Thread.sleep(500);
-		
-		gpio.setState(false, outs);
-		Thread.sleep(500);
-		
-		gpio.setState(true, outs);
-		Thread.sleep(500);
-		
-		gpio.setState(false, outs);
-		Thread.sleep(500);
-		
-		for(int i = 0; i <= outs.length; i++){
-			try{
-				outs[i].setState(true);
-			}catch (Exception e) {}
-			try{
-				outs[i-1].setState(false);
-			}catch (Exception e) {}
-			Thread.sleep(500);
-		}
-		
-		gpio.shutdown();
-		
 	}
+	
+	public void setWireState(int i, boolean state){
+		if(i < 1 || i > 8)
+			return;
+		outs[i-1].setState(true);
+	}
+	
+	public void toggleState(int i){
+		if(i < 1 || i > 8)
+			return;
+		outs[i-1].toggle();
+	}
+	
+	public void allOn(){
+		gpio.setState(true, outs);
+	}
+	public void allOff(){
+		gpio.setState(false, outs);
+	}
+	public boolean toggle(int i) {
+		if(i < 1 || i > 8)
+			return false;
+		outs[i-1].toggle();
+		return (gpio.getState(outs[i-1]) == PinState.HIGH ? true: false);
+	}
+	public boolean getState(int i) {
+		if(i < 1 || i > 8)
+			return false;
+		return (gpio.getState(outs[i-1]) == PinState.HIGH ? true: false);
+	}
+	@Override
+	public void close() throws IOException {
+		gpio.shutdown();
+	}
+
+	
 	
 	
 }
