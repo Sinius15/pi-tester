@@ -47,13 +47,19 @@ public class USBTester implements UsbDeviceListener {
 	}
 	
 	@Override
-	public void dataEventOccurred(UsbDeviceDataEvent arg0) {}
+	public void dataEventOccurred(UsbDeviceDataEvent e) {
+		
+	}
 	
 	@Override
-	public void errorEventOccurred(UsbDeviceErrorEvent arg0) {}
+	public void errorEventOccurred(UsbDeviceErrorEvent e) {
+		
+	}
 	
 	@Override
-	public void usbDeviceDetached(UsbDeviceEvent arg0) {}
+	public void usbDeviceDetached(UsbDeviceEvent e) {
+		
+	}
 	
 	public static void main(String[] args) throws UsbException {
 		new USBTester();
