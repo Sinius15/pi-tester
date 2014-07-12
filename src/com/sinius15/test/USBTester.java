@@ -8,12 +8,6 @@ import org.usb4java.LibUsbException;
 
 public class USBTester {
 	
-	/**
-	 * Main method.
-	 * 
-	 * @param args
-	 *            Command-line arguments (Ignored)
-	 */
 	public static void main(String[] args) {
 		
 		// Initialize the libusb context
