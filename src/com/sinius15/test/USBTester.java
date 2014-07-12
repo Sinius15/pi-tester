@@ -61,63 +61,14 @@ public class USBTester {
 	 *             When sending the message failed.
 	 */
 	public static void sendMessage(UsbDevice device, byte[] message) throws UsbException {
-		UsbControlIrp irp = device
-				.createUsbControlIrp(
+		UsbControlIrp irp = device.createUsbControlIrp(
 						(byte) (UsbConst.REQUESTTYPE_TYPE_CLASS | UsbConst.REQUESTTYPE_RECIPIENT_INTERFACE),
 						(byte) 0x09, (short) 2, (short) 1);
 		irp.setData(message);
 		device.syncSubmit(irp);
 	}
 	
-	/**
-	 * Sends a command to the missile launcher.
-	 * 
-	 * @param device
-	 *            The USB device handle.
-	 * @param command
-	 *            The command to send.
-	 * @throws UsbException
-	 *             When USB communication failed.
-	 */
-	public static void sendCommand(UsbDevice device, int command) throws UsbException {
-		byte[] message = new byte[64];
-		message[1] = (byte) ((command & CMD_LEFT) > 0 ? 1 : 0);
-		message[2] = (byte) ((command & CMD_RIGHT) > 0 ? 1 : 0);
-		message[3] = (byte) ((command & CMD_UP) > 0 ? 1 : 0);
-		message[4] = (byte) ((command & CMD_DOWN) > 0 ? 1 : 0);
-		message[5] = (byte) ((command & CMD_FIRE) > 0 ? 1 : 0);
-		message[6] = 8;
-		message[7] = 8;
-		sendMessage(device, INIT_A);
-		sendMessage(device, INIT_B);
-		sendMessage(device, message);
-	}
-	
-	/**
-	 * Read a key from stdin and returns it.
-	 * 
-	 * @return The read key.
-	 */
-	public static char readKey() {
-		try {
-			String line = new BufferedReader(new InputStreamReader(System.in)).readLine();
-			if (line.length() > 0)
-				return line.charAt(0);
-			return 0;
-		} catch (IOException e) {
-			throw new RuntimeException("Unable to read key", e);
-		}
-	}
-	
-	/**
-	 * Main method.
-	 * 
-	 * @param args
-	 *            Command-line arguments (Ignored)
-	 * @throws UsbException
-	 *             When an USB error was reported which wasn't handled by this
-	 *             program itself.
-	 */
+
 	public static void main(String[] args) throws UsbException {
 		// Search for the missile launcher USB device and stop when not found
 		UsbDevice device = findMissileLauncher(UsbHostManager.getUsbServices().getRootUsbHub());
