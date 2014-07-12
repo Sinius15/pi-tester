@@ -12,7 +12,7 @@ public class Remote {
 			ConsoleReader reader = new ConsoleReader();
 			char read;
 			while((read = (char) reader.readCharacter("abcdefghijklmnoprstuvwxyz".toCharArray())) != 'q'){
-				
+				System.out.println(read);
 			}
 			
 			System.out.println(reader.readVirtualKey());
