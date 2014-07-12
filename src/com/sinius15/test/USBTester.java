@@ -1,8 +1,5 @@
 package com.sinius15.test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import javax.usb.UsbConfiguration;
@@ -19,11 +16,9 @@ import javax.usb.UsbInterfacePolicy;
 public class USBTester {
 	
 	/** The vendor ID of the missile launcher. */
-	private static final short VENDOR_ID = 0x1130;
+	private static final short VENDOR_ID = 0x0424;
 	
-	/** The product ID of the missile launcher. */
-	private static final short PRODUCT_ID = 0x0202;
-	
+	@SuppressWarnings("unchecked")
 	public static UsbDevice findMissileLauncher(UsbHub hub) {
 		UsbDevice launcher = null;
 		
@@ -34,7 +29,7 @@ public class USBTester {
 					return launcher;
 			} else {
 				UsbDeviceDescriptor desc = device.getUsbDeviceDescriptor();
-				if (desc.idVendor() == VENDOR_ID && desc.idProduct() == PRODUCT_ID)
+				if (desc.idVendor() == VENDOR_ID)
 					return device;
 			}
 		}
