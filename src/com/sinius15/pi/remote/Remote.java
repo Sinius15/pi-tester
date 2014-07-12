@@ -45,7 +45,7 @@ public class Remote {
 		List<Character> list = new ArrayList<Character>();
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
-				list.add(arr[i][j]);
+				list.add(arr[i][j]); 
 			}
 		}
 		
