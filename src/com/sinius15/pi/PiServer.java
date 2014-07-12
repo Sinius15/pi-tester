@@ -20,7 +20,7 @@ public class PiServer {
 		wireManager = new WireManager();
 		ligtController = new PiServer();
 		new Remote();
-		
+		 
 	} 
 	
 }
