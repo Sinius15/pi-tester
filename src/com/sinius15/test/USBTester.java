@@ -1,5 +1,6 @@
 package com.sinius15.test;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +25,11 @@ public class USBTester implements UsbDeviceListener {
 		}
 		
 		device.addUsbDeviceListener(this);
-		System.in.read();
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
