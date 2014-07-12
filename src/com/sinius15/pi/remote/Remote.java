@@ -2,10 +2,9 @@ package com.sinius15.pi.remote;
 
 import java.io.IOException;
 
-import com.sinius15.pi.PiServer;
-import com.sinius15.pi.server.WireManager;
-
 import jline.ConsoleReader;
+
+import com.sinius15.pi.PiServer;
 
 public class Remote {
 	
