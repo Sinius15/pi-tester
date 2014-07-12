@@ -1,4 +1,4 @@
-package com.sinius15.pi;
+package com.sinius15.pi.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;

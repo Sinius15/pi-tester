@@ -35,7 +35,7 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-import com.sinius15.pi.LightServer;
+import com.sinius15.pi.server.LightServer;
 
 public class KnockKnockClient {
 	

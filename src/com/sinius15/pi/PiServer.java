@@ -1,5 +1,8 @@
 package com.sinius15.pi;
 
+import com.sinius15.pi.server.LightServer;
+import com.sinius15.pi.server.WireManager;
+
 public class PiServer {
 	
 	public PiServer() {
@@ -15,6 +18,8 @@ public class PiServer {
 	public static void main(String[] args) throws InterruptedException {
 		wireManager = new WireManager();
 		ligtController = new PiServer();
+		
+		
 	} 
 	
 }

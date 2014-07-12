@@ -1,4 +1,6 @@
-package com.sinius15.pi;
+package com.sinius15.pi.server;
+
+import com.sinius15.pi.PiServer;
 
 public class Protocol {
 	
