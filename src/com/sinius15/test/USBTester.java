@@ -1,5 +1,6 @@
 package com.sinius15.test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.usb.UsbDevice;
@@ -48,7 +49,7 @@ public class USBTester implements UsbDeviceListener {
 	
 	@Override
 	public void dataEventOccurred(UsbDeviceDataEvent e) {
-		
+		System.out.println(Arrays.toString(e.getUsbControlIrp().getData()));
 	}
 	
 	@Override
