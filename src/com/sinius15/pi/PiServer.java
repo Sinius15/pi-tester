@@ -19,7 +19,7 @@ public class PiServer {
 	public static void main(String[] args) throws InterruptedException {
 		if(args.length == 0){
 			wireManager = new WireManager();
-			ligtController = new PiServer();	
+			ligtController = new PiServer();	 
 		}
 		
 		new Remote();
