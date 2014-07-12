@@ -46,6 +46,7 @@ public class USBTester {
 				System.out.println("busNumber:\t" + busNumber);
 				System.out.println("address:\t" + address);
 				System.out.println("idProduct:\t" + descriptor.idProduct());
+				System.out.println("name:" + descriptor.dump());
 			}
 		} finally {
 			// Ensure the allocated device list is freed
