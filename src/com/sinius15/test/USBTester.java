@@ -1,5 +1,7 @@
 package com.sinius15.test;
 
+import javax.usb.UsbDevice;
+
 import org.usb4java.Device;
 import org.usb4java.DeviceDescriptor;
 import org.usb4java.DeviceList;
@@ -27,6 +29,7 @@ public class USBTester {
 		try {
 			// Iterate over all devices and list them
 			for (Device device : list) {
+				UsbDevice dev = (UsbDevice) device;
 				int address = LibUsb.getDeviceAddress(device);
 				int busNumber = LibUsb.getBusNumber(device);
 				DeviceDescriptor descriptor = new DeviceDescriptor(); 
