@@ -49,12 +49,12 @@ public class USBTester {
 		// Search for the missile launcher USB device and stop when not found
 		UsbDevice device = findMissileLauncher(UsbHostManager.getUsbServices().getRootUsbHub());
 		if (device == null) {
-			System.err.println("Missile launcher not found.");
+			System.err.println("Not Found");
 			System.exit(1);
 			return;
 		}
 		
-		// Claim the interface
+
 		UsbConfiguration configuration = device.getUsbConfiguration((byte) 1);
 		UsbInterface iface = configuration.getUsbInterface((byte) 1);
 		iface.claim(new UsbInterfacePolicy() {
