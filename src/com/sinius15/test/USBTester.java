@@ -29,7 +29,7 @@ public class USBTester {
 			for (Device device : list) {
 				int address = LibUsb.getDeviceAddress(device);
 				int busNumber = LibUsb.getBusNumber(device);
-				DeviceDescriptor descriptor = new DeviceDescriptor();
+				DeviceDescriptor descriptor = new DeviceDescriptor(); 
 				result = LibUsb.getDeviceDescriptor(device, descriptor);
 				if (result < 0) {
 					throw new LibUsbException("Unable to read device descriptor", result);
