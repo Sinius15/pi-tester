@@ -32,7 +32,7 @@ public class Remote {
 			while (true) {
 				char in = (char) cr.readCharacter(things1d);
 				handleInput(in);
-				cr.printNewline();
+				cr.printNewline(); 
 				cr.printString(Character.toString(in));
 			}
 		} catch (IOException e) {
