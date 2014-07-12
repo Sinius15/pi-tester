@@ -15,6 +15,6 @@ public class LightController {
 	public static void main(String[] args) throws InterruptedException {
 		wireManager = new WireManager();
 		ligtController = new LightController();
-	}
+	} 
 	
 }
