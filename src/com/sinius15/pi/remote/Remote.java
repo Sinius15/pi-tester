@@ -38,7 +38,28 @@ public class Remote {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public void handleInput(char in){
+		int button = 1;
+		mainLoop : 
+		for(char[] d2 : things2d){
+			for(char d1 :d2){
+				if(d1 == in)
+					break mainLoop;
+			}
+			button++;
+		}
+		if(button <= 8){
+			PiServer.wireManager.toggle(button);
+			return;
+		}
+		if(button == 9){
+			PiServer.wireManager.allOn();
+		}
+		if(button == 10){
+			PiServer.wireManager.allOff();
+		}
 	}
 	
 	public static char[] to1d(char[][] arr) {
