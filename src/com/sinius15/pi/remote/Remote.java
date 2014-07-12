@@ -11,7 +11,7 @@ import com.sinius15.pi.PiServer;
 public class Remote {
 	
 	char[][] things2d = new char[][]{
-			{'1','.','?'},
+			{'1','.','?', '\t'},
 			{'2','a','b', 'c', 'A', 'B', 'C'},
 			{'3','d','e', 'f', 'D', 'E', 'F'},
 			{'4','g','h', 'i', 'G', 'H', 'I'},
