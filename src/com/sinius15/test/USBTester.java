@@ -12,10 +12,25 @@ import javax.usb.UsbHostManager;
 import javax.usb.UsbHub;
 import javax.usb.UsbInterface;
 import javax.usb.UsbInterfacePolicy;
+import javax.usb.event.UsbDeviceDataEvent;
+import javax.usb.event.UsbDeviceErrorEvent;
+import javax.usb.event.UsbDeviceEvent;
+import javax.usb.event.UsbDeviceListener;
 
-public class USBTester {
+public class USBTester implements UsbDeviceListener {
 	
-	/** The vendor ID of the missile launcher. */
+	public USBTester(){
+		UsbDevice device = findMissileLauncher(UsbHostManager.getUsbServices().getRootUsbHub());
+		if (device == null) {
+			System.err.println("Not Found");
+			System.exit(1);
+			return;
+		}
+		
+		device.addUsbDeviceListener(this);
+
+	}
+	
 	private static final short VENDOR_ID = 0x0424;
 	
 	@SuppressWarnings("unchecked")
@@ -46,22 +61,15 @@ public class USBTester {
 	
 
 	public static void main(String[] args) throws UsbException {
-		// Search for the missile launcher USB device and stop when not found
-		UsbDevice device = findMissileLauncher(UsbHostManager.getUsbServices().getRootUsbHub());
-		if (device == null) {
-			System.err.println("Not Found");
-			System.exit(1);
-			return;
-		}
 		
-
-		UsbConfiguration configuration = device.getUsbConfiguration((byte) 1);
-		UsbInterface iface = configuration.getUsbInterface((byte) 1);
-		iface.claim(new UsbInterfacePolicy() {
-			@Override
-			public boolean forceClaim(UsbInterface usbInterface) {
-				return true;
-			}
-		});
 	}
+
+	@Override
+	public void dataEventOccurred(UsbDeviceDataEvent arg0) {}
+
+	@Override
+	public void errorEventOccurred(UsbDeviceErrorEvent arg0) {}
+
+	@Override
+	public void usbDeviceDetached(UsbDeviceEvent arg0) {}
 }
