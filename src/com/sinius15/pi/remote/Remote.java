@@ -21,7 +21,7 @@ public class Remote {
 				input.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			} 
 		}
 	}
 	
