@@ -33,7 +33,7 @@ public class Remote {
 			cr = new ConsoleReader();
 			
 			while (true){
-				char car = cr.readCharacter(things);
+				int in = cr.readCharacter(things1d);
 				PiServer.wireManager.toggle(3);
 			}
 		} catch (IOException e) {
