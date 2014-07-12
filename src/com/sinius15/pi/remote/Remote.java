@@ -1,8 +1,6 @@
 package com.sinius15.pi.remote;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 
 import jline.ConsoleReader;
 
