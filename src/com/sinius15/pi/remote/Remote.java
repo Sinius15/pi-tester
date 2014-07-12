@@ -24,7 +24,7 @@ public class Remote {
 	};
 	static char[] things1d;
 	
-	static{
+	static {
 		things1d =  mode(things2d);
 	}
 	
