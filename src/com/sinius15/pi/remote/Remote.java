@@ -10,7 +10,7 @@ import com.sinius15.pi.PiServer;
 
 public class Remote {
 	
-	char[][] things2d = new char[][]{
+	static char[][] things2d = new char[][]{
 			{'1','.', ',', '?', '\t'},
 			{'2','a','b', 'c', 'A', 'B', 'C'},
 			{'3','d','e', 'f', 'D', 'E', 'F'},
@@ -20,13 +20,17 @@ public class Remote {
 			{'7','p','q', 'r', 's', 'P', 'Q', 'R', 'S'},
 			{'8','t','u', 'v', 'T', 'U', 'V'},
 			{'9','w','x', 'y', 'z', 'X', 'Y', 'Z', 'W'},
-			{'0', ' ', '@', '*', '#'} 
+			{'0', ' ', '@', '*', '#', '_'} 
 	};
-	char[] things1d;
+	static char[] things1d;
+	
+	static{
+		things1d =  mode(things2d);
+	}
 	
 	public Remote(){
 		
-		things1d =  mode(things2d);
+		
 		
 		System.out.println("starting remote");
 		ConsoleReader cr;
