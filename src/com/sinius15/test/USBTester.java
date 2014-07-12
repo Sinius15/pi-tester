@@ -19,7 +19,7 @@ import javax.usb.event.UsbDeviceListener;
 
 public class USBTester implements UsbDeviceListener {
 	
-	public USBTester(){
+	public USBTester() throws SecurityException, UsbException{
 		UsbDevice device = findMissileLauncher(UsbHostManager.getUsbServices().getRootUsbHub());
 		if (device == null) {
 			System.err.println("Not Found");
@@ -61,7 +61,7 @@ public class USBTester implements UsbDeviceListener {
 	
 
 	public static void main(String[] args) throws UsbException {
-		
+		new USBTester();
 	}
 
 	@Override
