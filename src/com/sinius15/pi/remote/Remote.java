@@ -35,7 +35,7 @@ public class Remote {
 			while (true){
 				char in = (char) cr.readCharacter(things1d);
 				cr.printNewline();
-				cr.printString(Character.toString(in));
+				cr.printString(Character.toString(in));  
 				PiServer.wireManager.toggle(3); 
 			}
 		} catch (IOException e) {
