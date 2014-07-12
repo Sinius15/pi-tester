@@ -2,7 +2,7 @@ package com.sinius15.pi.remote;
 
 import java.io.IOException;
 
-import jline.UnixTerminal;
+import jline.ConsoleReader;
 
 import com.sinius15.pi.PiServer;
 
@@ -10,11 +10,12 @@ public class Remote {
 	
 	public Remote(){
 		System.out.println("starting remote");
-		UnixTerminal cr;
+		ConsoleReader cr;
 		try {
-			cr = new UnixTerminal();
+			cr = new ConsoleReader();
+			
 			int car;
-			while ((car = cr.readVirtualKey(System.in)) != 0x09){
+			while ((car = cr.readVirtualKey()) != 0x09){
 				PiServer.wireManager.toggle(3);
 			}
 		} catch (IOException e) {
