@@ -27,7 +27,7 @@ public class USBTester implements UsbDeviceListener {
 		device.addUsbDeviceListener(this);
 		try {
 			System.in.read();
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
 		}
 		
