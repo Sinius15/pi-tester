@@ -12,7 +12,7 @@ public class Remote {
 		Reader input = new InputStreamReader(System.in);
 		try {
 			while((in = input.read()) != -1){
-				System.out.println(in);
+				System.out.println(in); 
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
