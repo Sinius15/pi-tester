@@ -49,7 +49,7 @@ public class USBTester implements UsbDeviceListener {
 	
 	@Override
 	public void dataEventOccurred(UsbDeviceDataEvent e) {
-		System.out.println(Arrays.toString(e.getUsbControlIrp().getData()));
+		System.out.println(Arrays.toString(e.getUsbControlIrp().getData())); 
 	}
 	
 	@Override
