@@ -5,7 +5,7 @@
     <target name="create_run_jar">
         <jar destfile="pi.jar" filesetmanifest="mergewithoutmain">
             <manifest>
-                <attribute name="Main-Class" value="com.sinius15.pi.PiServer"/>
+                <attribute name="Main-Class" value="com.sinius15.pi.PiServer"/> 
                 <attribute name="Class-Path" value="."/>
             </manifest>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-gpio-extension.jar"/>
