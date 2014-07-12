@@ -24,7 +24,7 @@ public class USBTester implements UsbDeviceListener {
 		}
 		
 		device.addUsbDeviceListener(this);
-		
+		System.in.read();
 	}
 	
 	private static final short VENDOR_ID = 0x0424;
