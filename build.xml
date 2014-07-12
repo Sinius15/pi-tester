@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<project name="pi-tester" basedir=".">
+  <target name="jar">
+    <jar destfile="pi.jar" basedir="bin">
+      <manifest>
+      </manifest>
+    </jar>
+  </target>
+</project> 

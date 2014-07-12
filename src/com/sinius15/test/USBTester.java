@@ -19,9 +19,9 @@ public class USBTester {
 		// Initialize the libusb context
 		int result = LibUsb.init(null);
 		
-		if (result < 0) {
+		if (result < 0) { 
 			throw new LibUsbException("Unable to initialize libusb", result);
-		}
+		}   
 		
 		// Read the USB device list
 		DeviceList list = new DeviceList();
