@@ -19,7 +19,7 @@ public class Remote {
 	static char[] things1d;
 	
 	static {
-		things1d = mode(things2d);
+		things1d = to1d(things2d);
 	}
 	
 	public Remote() {
@@ -41,7 +41,7 @@ public class Remote {
 		
 	}
 	
-	public static char[] mode(char[][] arr) {
+	public static char[] to1d(char[][] arr) {
 		List<Character> list = new ArrayList<Character>();
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
