@@ -40,6 +40,9 @@ public class USBTester {
 				if (result < 0) {
 					throw new LibUsbException("Unable to read device descriptor", result);
 				}
+				System.out.println("-------------------------");
+				System.out.println("new Device Found!");
+				
 				System.out.format("Bus %03d, Device %03d: Vendor %04x, Product %04x%n", busNumber,
 						address, descriptor.idVendor(), descriptor.idProduct());
 			}
