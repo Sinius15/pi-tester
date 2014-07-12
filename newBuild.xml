@@ -3,18 +3,18 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
-        <jar destfile="C:/Users/Sijmen/Documents/Java/TestSpace/pi/usb.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="usb.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="com.sinius15.test.USBTester"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/Sijmen/Documents/Java/TestSpace/pi/libs/pi4j/pi4j-gpio-extension.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/Sijmen/Documents/Java/TestSpace/pi/libs/pi4j/pi4j-device.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/Sijmen/Documents/Java/TestSpace/pi/libs/pi4j/pi4j-core.jar"/>
-            <fileset dir="C:/Users/Sijmen/Documents/Java/TestSpace/pi/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/Sijmen/Documents/Java/TestSpace/pi/libs/pi4j/pi4j-example.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/Sijmen/Documents/Java/TestSpace/pi/libs/pi4j/pi4j-service.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/Sijmen/Documents/Java/TestSpace/pi/libs/jline-1.0/jline-1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-gpio-extension.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-device.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-core.jar"/>
+            <fileset dir="bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-example.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-service.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/jline-1.0/jline-1.0.jar"/>
         </jar>
     </target>
 </project>
