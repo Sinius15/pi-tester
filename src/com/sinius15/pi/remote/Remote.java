@@ -13,7 +13,7 @@ public class Remote {
 			cr = new ConsoleReader();
 			int car;
 			while ((car = cr.readVirtualKey()) != 0x09){
-				System.out.println(car);
+				System.out.println(car); 
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
