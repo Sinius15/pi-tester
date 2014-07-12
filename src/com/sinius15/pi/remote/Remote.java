@@ -25,7 +25,7 @@ public class Remote {
 	
 	public Remote(){
 		
-		things1d =  
+		things1d =  mode(things2d);
 		
 		System.out.println("starting remote");
 		ConsoleReader cr;
