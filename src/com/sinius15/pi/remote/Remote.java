@@ -10,6 +10,11 @@ public class Remote {
 		System.out.println("starting remote");
 		try {
 			ConsoleReader reader = new ConsoleReader();
+			char read;
+			while((read = (char) reader.readCharacter("abcdefghijklmnoprstuvwxyz".toCharArray())) != 'q'){
+				
+			}
+			
 			System.out.println(reader.readVirtualKey());
 		} catch (IOException e) {
 			e.printStackTrace();
