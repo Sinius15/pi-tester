@@ -11,7 +11,7 @@ public class Protocol {
 			int key = Integer.parseInt(in.split(" ")[1]);
 			if (key < 1 || key > 8)
 				return "error_invalid_argument";
-			LightController.wireManager.setWireState(key, true);
+			PiServer.wireManager.setWireState(key, true);
 			return "succes";
 		}
 		if (in.startsWith("off")) {
@@ -20,15 +20,15 @@ public class Protocol {
 			int key = Integer.parseInt(in.split(" ")[1]);
 			if (key < 1 || key > 8)
 				return "error_invalid_argument";
-			LightController.wireManager.setWireState(key, false);
+			PiServer.wireManager.setWireState(key, false);
 			return "succes";
 		}
 		if (in.startsWith("allon")) {
-			LightController.wireManager.allOn();
+			PiServer.wireManager.allOn();
 			return "succes";
 		}
 		if (in.startsWith("alloff")) {
-			LightController.wireManager.allOff();
+			PiServer.wireManager.allOff();
 			return "succes";
 		}
 		if (in.startsWith("toggle")) {
@@ -37,7 +37,7 @@ public class Protocol {
 			int key = Integer.parseInt(in.split(" ")[1]);
 			if (key < 1 || key > 8)
 				return "error_invalid_argument";
-			if (LightController.wireManager.toggle(key))
+			if (PiServer.wireManager.toggle(key))
 				return "succes_state_on";
 			return "succes_state_off";
 		}
@@ -47,7 +47,7 @@ public class Protocol {
 			int key = Integer.parseInt(in.split(" ")[1]);
 			if (key < 1 || key > 8)
 				return "error_invalid_argument";
-			if (LightController.wireManager.getState(key))
+			if (PiServer.wireManager.getState(key))
 				return "succes_state_on";
 			return "succes_state_off";
 		}
