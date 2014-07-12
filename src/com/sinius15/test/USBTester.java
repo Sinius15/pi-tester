@@ -24,15 +24,6 @@ public class USBTester {
 	/** The product ID of the missile launcher. */
 	private static final short PRODUCT_ID = 0x0202;
 	
-	/**
-	 * Recursively searches for the missile launcher device on the specified USB
-	 * hub and returns it. If there are multiple missile launchers attached then
-	 * this simple demo only returns the first one.
-	 * 
-	 * @param hub
-	 *            The USB hub to search on.
-	 * @return The missile launcher USB device or null if not found.
-	 */
 	public static UsbDevice findMissileLauncher(UsbHub hub) {
 		UsbDevice launcher = null;
 		
@@ -49,17 +40,7 @@ public class USBTester {
 		}
 		return null;
 	}
-	
-	/**
-	 * Sends a message to the missile launcher.
-	 * 
-	 * @param device
-	 *            The USB device handle.
-	 * @param message
-	 *            The message to send.
-	 * @throws UsbException
-	 *             When sending the message failed.
-	 */
+
 	public static void sendMessage(UsbDevice device, byte[] message) throws UsbException {
 		UsbControlIrp irp = device.createUsbControlIrp(
 						(byte) (UsbConst.REQUESTTYPE_TYPE_CLASS | UsbConst.REQUESTTYPE_RECIPIENT_INTERFACE),
