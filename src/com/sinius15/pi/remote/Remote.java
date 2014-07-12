@@ -8,17 +8,17 @@ public class Remote {
 	
 	public Remote(){
 		System.out.println("starting remote");
+		ConsoleReader cr;
 		try {
-			ConsoleReader reader = new ConsoleReader();
-			char read;
-			while((read = (char) reader.readCharacter("abcdefghijklmnoprstuvwxyz".toCharArray())) != 'q'){
-				System.out.println(read); 
+			cr = new ConsoleReader();
+			int car;
+			while ((car = cr.readVirtualKey()) != 0x09){
+				System.out.println(car);
 			}
-			
-			System.out.println(reader.readVirtualKey());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 }
