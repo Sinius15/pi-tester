@@ -33,7 +33,7 @@ public class USBTester implements UsbDeviceListener {
 		
 	}
 	
-	private static final short VENDOR_ID = 0x1135;
+	private static final short VENDOR_ID = 0x1135; 
 	
 	@SuppressWarnings("unchecked")
 	public UsbDevice findDevice(UsbHub hub) {
