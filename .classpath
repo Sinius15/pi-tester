@@ -11,5 +11,23 @@
 	<classpathentry kind="lib" path="libs/pi4j/pi4j-gpio-extension.jar"/>
 	<classpathentry kind="lib" path="libs/pi4j/pi4j-service.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/usb4java/commons-lang3-3.2.1.jar"/>
+	<classpathentry kind="lib" path="libs/usb4java/libusb4java-1.2.0-linux-arm.jar"/>
+	<classpathentry kind="lib" path="libs/usb4java/usb4java-1.2.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://usb4java.org/apidocs"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/usb4java javax/usb-api-1.0.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://usb4java.org/apidocs"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/usb4java/libusb4java-1.2.0-windows-x86_64.jar"/>
+	<classpathentry kind="lib" path="libs/usb4java javax/usb4java-javax-1.2.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://usb4java.org/apidocs/index.html"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
