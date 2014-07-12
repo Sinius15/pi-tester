@@ -2,8 +2,6 @@ package com.sinius15.pi.remote;
 
 import java.io.IOException;
 
-import jline.ConsoleReader;
-import jline.Terminal;
 import jline.UnixTerminal;
 
 import com.sinius15.pi.PiServer;
