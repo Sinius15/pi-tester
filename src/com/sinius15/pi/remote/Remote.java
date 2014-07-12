@@ -19,7 +19,7 @@ public class Remote {
 				PiServer.wireManager.toggle(3);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		
 	}
