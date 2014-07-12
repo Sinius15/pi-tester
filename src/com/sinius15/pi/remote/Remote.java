@@ -15,7 +15,7 @@ public class Remote {
 			cr = new ConsoleReader();
 			
 			int car;
-			while ((car = cr.readVirtualKey()) != 0x09){
+			while (true){
 				PiServer.wireManager.toggle(3);
 			}
 		} catch (IOException e) {
