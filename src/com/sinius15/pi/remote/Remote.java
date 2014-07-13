@@ -33,7 +33,7 @@ public class Remote {
 				char in = (char) cr.readCharacter(things1d);
 				handleInput(in);
 				cr.printNewline(); 
-				cr.printString(Character.toString(in));
+				cr.printString("Input character: " + in);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
