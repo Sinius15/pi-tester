@@ -41,7 +41,6 @@ public class Launcher implements LaunchListener {
 	
 	@Override
 	public void onButtonDown(int row, int colomn) {
-		System.out.println("button down");
 		if (row == 1) {
 			colomn += 1;
 			PiServer.wireManager.toggle(colomn);
