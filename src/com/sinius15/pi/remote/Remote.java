@@ -32,7 +32,7 @@ public class Remote {
 			while (true) {
 				char in = (char) cr.readCharacter(things1d);
 				handleInput(in);
-				cr.printNewline(); 
+				cr.printNewline();
 				cr.printString("Input character: " + in);
 			}
 		} catch (IOException e) {
@@ -40,24 +40,23 @@ public class Remote {
 		}
 	}
 	
-	public void handleInput(char in){
+	public void handleInput(char in) {
 		int button = 1;
-		mainLoop : 
-		for(char[] d2 : things2d){
-			for(char d1 :d2){
-				if(d1 == in)
+		mainLoop: for (char[] d2 : things2d) {
+			for (char d1 : d2) {
+				if (d1 == in)
 					break mainLoop;
 			}
 			button++;
 		}
-		if(button <= 8){
+		if (button <= 8) {
 			PiServer.wireManager.toggle(button);
 			return;
 		}
-		if(button == 9){
+		if (button == 9) {
 			PiServer.wireManager.allOn();
 		}
-		if(button == 10){
+		if (button == 10) {
 			PiServer.wireManager.allOff();
 		}
 	}
@@ -66,7 +65,7 @@ public class Remote {
 		List<Character> list = new ArrayList<Character>();
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
-				list.add(arr[i][j]); 
+				list.add(arr[i][j]);
 			}
 		}
 		
