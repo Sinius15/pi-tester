@@ -7,9 +7,11 @@ import com.sinius15.pi.PiServer;
 
 public class Launcher implements LaunchListener{
 	
+	public Launchpad pad;
+	
 	public Launcher(){
 		try {
-			Launchpad pad = new Launchpad("Lauchpad S");
+			pad = new Launchpad("Lauchpad S");
 			pad.addListener(this);
 		} catch (LaunchpadException e) {
 			e.printStackTrace();
