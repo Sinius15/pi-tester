@@ -16,7 +16,7 @@ public class Launcher implements LaunchListener {
 			System.out.println(s);
 		} 
 		try {
-			pad = new Launchpad("Lauchpad S");
+			pad = new Launchpad("S [hw:1,0,0]");
 			pad.addListener(this);
 			pad.LEDTest();
 			PiServer.wireManager.onChangeListeners.add(onChange);
