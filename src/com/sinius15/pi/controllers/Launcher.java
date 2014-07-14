@@ -13,6 +13,7 @@ public class Launcher implements LaunchListener {
 		try {
 			pad = new Launchpad("Lauchpad S");
 			pad.addListener(this);
+			pad.LEDTest();
 			PiServer.wireManager.onChangeListeners.add(onChange);
 			System.out.println("Found launchpad!");
 		} catch (LaunchpadException e) {
