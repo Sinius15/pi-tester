@@ -13,10 +13,13 @@ public class Launcher implements LaunchListener {
 		try {
 			pad = new Launchpad("Lauchpad S");
 			pad.addListener(this);
+			PiServer.wireManager.onChangeListeners.add(onChange);
+			System.out.println("Found launchpad!");
 		} catch (LaunchpadException e) {
 			e.printStackTrace();
+			System.err.println("Could not find launchpad.");
 		}
-		PiServer.wireManager.onChangeListeners.add(onChange);
+		
 	}
 	
 	private Runnable onChange = new Runnable() {
