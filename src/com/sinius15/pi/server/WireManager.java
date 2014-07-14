@@ -42,7 +42,7 @@ public class WireManager implements Closeable{
 		if(i < 1 || i > 8)
 			return;
 		outs[i-1].toggle();
-		onChange();
+		onChange(); 
 	}
 	
 	public void allOn(){
