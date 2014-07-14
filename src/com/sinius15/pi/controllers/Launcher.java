@@ -3,6 +3,7 @@ package com.sinius15.pi.controllers;
 import com.sinius15.launchpad.LaunchListener;
 import com.sinius15.launchpad.Launchpad;
 import com.sinius15.launchpad.LaunchpadException;
+import com.sinius15.pi.PiServer;
 
 public class Launcher implements LaunchListener{
 	
@@ -10,7 +11,6 @@ public class Launcher implements LaunchListener{
 		try {
 			Launchpad pad = new Launchpad("Lauchpad S");
 			pad.addListener(this);
-			pad.
 		} catch (LaunchpadException e) {
 			e.printStackTrace();
 		}
@@ -18,7 +18,14 @@ public class Launcher implements LaunchListener{
 	}
 
 	@Override
-	public void onButtonDown(int row, int colomn) {}
+	public void onButtonDown(int row, int colomn) {
+		if(row == 1){
+			colomn += 1;
+			if(colomn == 9)
+				return;
+			PiServer.wireManager.toggle(colomn);
+		}
+	}
 
 	@Override
 	public void onButtonUp(int row, int colomn) {}
