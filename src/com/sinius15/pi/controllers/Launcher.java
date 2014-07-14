@@ -23,8 +23,6 @@ public class Launcher implements LaunchListener{
 	public void onButtonDown(int row, int colomn) {
 		if(row == 1){
 			colomn += 1;
-			if(colomn == 9)
-				return;
 			PiServer.wireManager.toggle(colomn);
 		}
 	}
