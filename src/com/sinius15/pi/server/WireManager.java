@@ -14,7 +14,7 @@ public class WireManager implements Closeable{
 	
 	private GpioPinDigitalOutput[] outs;
 	private GpioControllerImpl gpio;
-	public ArrayList<Runnable> onChangeListeners;
+	public ArrayList<Runnable> onChangeListeners = new ArrayList<>();
 	
 	public WireManager(){
 		gpio = (GpioControllerImpl) GpioFactory.getInstance();
