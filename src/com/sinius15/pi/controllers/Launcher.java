@@ -14,7 +14,7 @@ public class Launcher implements LaunchListener {
 	public Launcher() {
 		for(String s : MidiCommon.listDevices(true, true)){
 			System.out.println(s);
-		}
+		} 
 		try {
 			pad = new Launchpad("Lauchpad S");
 			pad.addListener(this);
