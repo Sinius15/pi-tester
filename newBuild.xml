@@ -11,7 +11,7 @@
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-gpio-extension.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-device.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-core.jar"/>
-        	<zipfileset excludes="META-INF/*.SF" src="libs/pi4j/Java-Launchpad-Library_v2.0.jar"/>
+        	<zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v2.0.jar"/>
             <fileset dir="bin"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-example.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-service.jar"/>
