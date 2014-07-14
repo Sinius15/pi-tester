@@ -1,5 +1,7 @@
 package com.sinius15.pi.controllers;
 
+import org.jsresources.MidiCommon;
+
 import com.sinius15.launchpad.LaunchListener;
 import com.sinius15.launchpad.Launchpad;
 import com.sinius15.launchpad.LaunchpadException;
@@ -10,6 +12,9 @@ public class Launcher implements LaunchListener {
 	public Launchpad pad;
 	
 	public Launcher() {
+		for(String s : MidiCommon.listDevices(true, true)){
+			System.out.println(s);
+		}
 		try {
 			pad = new Launchpad("Lauchpad S");
 			pad.addListener(this);
