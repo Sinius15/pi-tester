@@ -2,6 +2,7 @@ package com.sinius15.pi.server;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
@@ -13,6 +14,7 @@ public class WireManager implements Closeable{
 	
 	private GpioPinDigitalOutput[] outs;
 	private GpioControllerImpl gpio;
+	public ArrayList<Runnable> onChangeListeners;
 	
 	public WireManager(){
 		gpio = (GpioControllerImpl) GpioFactory.getInstance();
