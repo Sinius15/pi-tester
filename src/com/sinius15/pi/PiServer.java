@@ -1,5 +1,6 @@
 package com.sinius15.pi;
 
+import com.sinius15.pi.controllers.Launcher;
 import com.sinius15.pi.controllers.Remote;
 import com.sinius15.pi.server.LightServer;
 import com.sinius15.pi.server.WireManager;
@@ -15,13 +16,14 @@ public class PiServer {
 	// publci static part
 	public static PiServer ligtController;
 	public static WireManager wireManager;
+	public static Launcher launcher;
 	
 	public static void main(String[] args) throws InterruptedException {
 		if(args.length == 0){
 			wireManager = new WireManager();
 			ligtController = new PiServer();	 
 		}
-		
+		launcher = new Launcher();
 		new Remote();
 		 
 	} 
