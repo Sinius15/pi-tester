@@ -13,7 +13,7 @@ public class Launcher implements LaunchListener {
 	
 	public Launcher() {
 		for(String s : MidiCommon.listDevices(true, true)){
-			System.out.println(s);
+			System.out.println(s); 
 		} 
 		try {
 			pad = new Launchpad("S [hw:1,0,0]");
