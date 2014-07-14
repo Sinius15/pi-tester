@@ -12,5 +12,6 @@
 	<classpathentry exported="true" kind="lib" path="libs/pi4j/pi4j-service.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libs/jline-1.0/jline-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/Java-Launchpad-Library_v2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
