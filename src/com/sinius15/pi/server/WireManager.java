@@ -33,34 +33,44 @@ public class WireManager implements Closeable{
 		if(i < 1 || i > 8)
 			return;
 		outs[i-1].setState(state);
+		onChange();
 	}
 	
 	public void toggleState(int i){
 		if(i < 1 || i > 8)
 			return;
 		outs[i-1].toggle();
+		onChange();
 	}
 	
 	public void allOn(){
 		gpio.setState(true, outs);
+		onChange();
 	}
 	public void allOff(){
 		gpio.setState(false, outs);
+		onChange();
 	}
 	public boolean toggle(int i) {
 		if(i < 1 || i > 8)
 			return false;
 		outs[i-1].toggle();
+		onChange();
 		return (gpio.getState(outs[i-1]) == PinState.HIGH ? true: false);
 	}
 	public boolean getState(int i) {
 		if(i < 1 || i > 8)
 			return false;
+		onChange();
 		return (gpio.getState(outs[i-1]) == PinState.HIGH ? true: false);
 	}
 	@Override
 	public void close() throws IOException {
 		gpio.shutdown();
+	}
+	
+	private void onChange(){
+		
 	}
 
 	
