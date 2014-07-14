@@ -1,5 +1,7 @@
 package com.sinius15.pi.controllers;
 
+import javax.sound.midi.MidiUnavailableException;
+
 import org.jsresources.MidiCommon;
 
 import com.sinius15.launchpad.LaunchListener;
@@ -22,7 +24,7 @@ public class Launcher implements LaunchListener {
 			pad.LEDTest();
 			PiServer.wireManager.onChangeListeners.add(onChange);
 			System.out.println("Found launchpad!");
-		} catch (LaunchpadException e) {
+		} catch (LaunchpadException | MidiUnavailableException e) {
 			e.printStackTrace();
 			System.err.println("Could not find launchpad.");
 		}
