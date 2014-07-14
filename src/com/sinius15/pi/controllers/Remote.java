@@ -1,4 +1,4 @@
-package com.sinius15.pi.remote;
+package com.sinius15.pi.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
