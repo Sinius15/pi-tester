@@ -63,7 +63,6 @@ public class WireManager implements Closeable{
 	public boolean getState(int i) {
 		if(i < 1 || i > 8)
 			return false;
-		onChange();
 		return (gpio.getState(outs[i-1]) == PinState.HIGH ? true: false);
 	}
 	@Override
