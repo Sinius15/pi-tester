@@ -72,7 +72,8 @@ public class WireManager implements Closeable{
 	}
 	
 	private void onChange(){
-		
+		for(Runnable r : onChangeListeners)
+			r.run();
 	}
 
 	
