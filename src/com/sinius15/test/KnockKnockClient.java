@@ -83,6 +83,11 @@ public class KnockKnockClient {
 					String to;
 					for(int i = 1; i < 9; i++){
 						out.println("on " + i);
+						Thread.sleep(1000);
+					}
+					for(int i = 1; i < 9; i++){
+						out.println("off " + i);
+						Thread.sleep(1000);
 					}
 					while ((to = scanner.nextLine()) != null) {
 						out.println(to);
