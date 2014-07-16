@@ -38,13 +38,20 @@ public class Launcher implements LaunchListener {
 	
 	@Override
 	public void onButtonDown(int row, int colomn) {
+		colomn += 1;
 		if (row == 1) {
-			colomn += 1;
 			PiServer.wireManager.toggle(colomn);
+		}
+		if (row == 2) {
+			PiServer.wireManager.setWireState(colomn, true);
 		}
 	}
 	
 	@Override
-	public void onButtonUp(int row, int colomn) {}
+	public void onButtonUp(int row, int colomn) {
+		if (row == 2) {
+			PiServer.wireManager.setWireState(colomn, false);
+		}
+	}
 	
 }
