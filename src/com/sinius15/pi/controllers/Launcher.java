@@ -30,8 +30,10 @@ public class Launcher implements LaunchListener {
 		public void run() {
 			pad.reset();
 			for(int i = 1; i <= 8; i++){
-				if(PiServer.wireManager.getState(i))
+				if(PiServer.wireManager.getState(i)){
 					pad.setLedOn(i-1, 1, Launchpad.COLOUR_RED_FULL);
+					pad.setLedOn(i-1, 2, Launchpad.COLOUR_RED_FULL);
+				}
 			}
 		}
 	};
