@@ -20,13 +20,6 @@ public class Launcher implements LaunchListener {
 			System.out.println("Found launchpad!");
 		} catch (LaunchpadException | MidiUnavailableException e) {
 			e.printStackTrace();
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					
-				}
-			});
 			System.err.println("Could not find launchpad.");
 		}
 		
