@@ -17,6 +17,7 @@ public class PiServer implements Runnable{
 	public static PiServer ligtController;
 	public static WireManager wireManager;
 	public static Launcher launcher;
+	public static Remote remote;
 	
 	public static void main(String[] args) throws InterruptedException {
 		if(args.length == 0){
@@ -24,7 +25,7 @@ public class PiServer implements Runnable{
 			ligtController = new PiServer();	 
 		}
 		
-		new Remote();
+		remote = new Remote();
 		 
 	}
 	boolean running = true;
