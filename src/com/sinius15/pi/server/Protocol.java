@@ -35,7 +35,7 @@ public class Protocol {
 		}
 		if (in.startsWith("toggle")) {
 			if (argCount != 2)
-				return "error_invalid_argument";
+				return "error_invalid_argument"; 
 			int key = Integer.parseInt(in.split(" ")[1]);
 			if (key < 1 || key > 8)
 				return "error_invalid_argument";
