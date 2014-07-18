@@ -56,7 +56,7 @@ public class Protocol {
 		if (in.startsWith("restart")){
 			
 			PiServer.startUpdating();
-			//this is unreachable because 'PiServer.startUpdating(); stops the program.'
+			//this is unreachable because 'PiServer.startUpdating(); stops calls System.exit().'
 			return "";
 		}
 		return "error_invalid_request";
