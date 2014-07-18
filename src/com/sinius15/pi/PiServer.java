@@ -1,6 +1,5 @@
 package com.sinius15.pi;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.jsresources.MidiCommon;
