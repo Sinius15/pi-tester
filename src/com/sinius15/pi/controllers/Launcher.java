@@ -1,10 +1,7 @@
 package com.sinius15.pi.controllers;
 
-import javax.sound.midi.MidiUnavailableException;
-
 import com.sinius15.launchpad.LaunchListener;
 import com.sinius15.launchpad.Launchpad;
-import com.sinius15.launchpad.LaunchpadException;
 import com.sinius15.pi.PiServer;
 
 public class Launcher implements LaunchListener {
