@@ -15,15 +15,13 @@ public class PiServer implements Runnable{
 	public static WireManager wireManager;
 	public static Launcher launcher;
 	public static Remote remote;
+	public static LightServer server;
 	
 	public static void main(String[] args) throws InterruptedException {
-		if(args.length == 0){
+		if(args.length == 0)
 			wireManager = new WireManager();
-		}
 		
-		LightServer server = new LightServer();
-		Thread serverThread = new Thread(server);
-		serverThread.start();
+		
 		
 		remote = new Remote();
 		 
@@ -33,6 +31,7 @@ public class PiServer implements Runnable{
 	@Override
 	public void run() {
 		while(running){
+			//try to start launchpad if avalable
 			String[] deviceNames = MidiCommon.listDevices(true, true);
 			Arrays.asList(deviceNames).contains(Launcher.NAME);
 			if(launcher == null && Arrays.asList(deviceNames).contains(Launcher.NAME)){
@@ -42,6 +41,16 @@ public class PiServer implements Runnable{
 					launcher = null;
 				}
 			}
+			
+			//try to start webserver if not yet running
+			if(server == null){
+				try {
+					server = new LightServer();
+				} catch (Exception e) {
+					server = null;
+				}
+			}
+				
 			
 		}
 		
