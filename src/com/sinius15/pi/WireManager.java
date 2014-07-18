@@ -17,6 +17,7 @@ public class WireManager implements Closeable{
 	public ArrayList<Runnable> onChangeListeners = new ArrayList<>();
 	
 	public WireManager(){
+		Logger.log("Initializing WireManager...");
 		gpio = (GpioControllerImpl) GpioFactory.getInstance();
 		
 		outs = new GpioPinDigitalOutput[] {
@@ -29,6 +30,7 @@ public class WireManager implements Closeable{
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "gpio 7", PinState.LOW),
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8", PinState.LOW),
 		};
+		Logger.log("Initializing WireManager Done");
 	}
 	
 	public void setWireState(int i, boolean state){
@@ -74,8 +76,4 @@ public class WireManager implements Closeable{
 		for(Runnable r : onChangeListeners)
 			r.run();
 	}
-
-	
-	
-	
 }

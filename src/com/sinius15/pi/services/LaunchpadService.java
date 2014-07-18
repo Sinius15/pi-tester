@@ -1,21 +1,39 @@
-package com.sinius15.pi.controllers;
+package com.sinius15.pi.services;
+
+import javax.sound.midi.MidiUnavailableException;
 
 import com.sinius15.launchpad.LaunchListener;
 import com.sinius15.launchpad.Launchpad;
+import com.sinius15.launchpad.LaunchpadException;
 import com.sinius15.pi.PiServer;
+import com.sinius15.pi.Service;
 
-public class Launcher implements LaunchListener {
+public class LaunchpadService extends Service implements LaunchListener{
+
+	Launchpad pad = null;
 	
-	public static final String NAME = "S [hw:1,0,0]";
-	public Launchpad pad;
-	
-	public Launcher() throws Exception{
-		pad = new Launchpad(NAME);
-		pad.open(); 
-		pad.addListener(this);
-		PiServer.wireManager.onChangeListeners.add(onChange);
-		System.out.println("Found launchpad!");
-		
+	@Override
+	public boolean start() {
+		try {
+			pad = new Launchpad(PiServer.LAUNCHPAD_NAME);
+			pad.open();
+			pad.addListener(this);
+			PiServer.wireManager.onChangeListeners.add(onChange);
+		} catch (MidiUnavailableException | LaunchpadException e) {
+			return false;
+		} 
+		return true;
+	}
+
+	@Override
+	public void close() {
+		pad.close();
+		pad = null;
+	}
+
+	@Override
+	public String getName() {
+		return "Launchpad Inputter";
 	}
 	
 	private Runnable onChange = new Runnable() {
@@ -30,7 +48,7 @@ public class Launcher implements LaunchListener {
 			}
 		}
 	};
-	
+
 	@Override
 	public void onButtonDown(int row, int colomn) {
 		colomn += 1;
@@ -48,5 +66,4 @@ public class Launcher implements LaunchListener {
 			PiServer.wireManager.setWireState(colomn, false);
 		}
 	}
-	
 }

@@ -31,11 +31,14 @@ package com.sinius15.test;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Scanner;
 
-import com.sinius15.pi.server.LightServer;
+import com.sinius15.pi.PiServer;
 
 public class KnockKnockClient {
 	
@@ -48,7 +51,7 @@ public class KnockKnockClient {
 		
 		String hostName = "10.233.0.116";
 		
-		server = new Socket(hostName, LightServer.port);
+		server = new Socket(hostName, PiServer.SOCKET_SERVER_PORT);
 		out = new PrintWriter(server.getOutputStream(), true);
 		in = new BufferedReader(new InputStreamReader(server.getInputStream()));
 		scanner = new Scanner(System.in, "UTF-8");

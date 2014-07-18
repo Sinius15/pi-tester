@@ -1,64 +1,58 @@
 package com.sinius15.pi;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
-import org.jsresources.MidiCommon;
+import com.sinius15.pi.services.LaunchpadService;
+import com.sinius15.pi.services.RemoteService;
+import com.sinius15.pi.services.SocketService;
+import com.sinius15.pi.services.WebsiteService;
 
-import com.sinius15.pi.controllers.Launcher;
-import com.sinius15.pi.controllers.Remote;
-import com.sinius15.pi.server.LightServer;
-
-public class PiServer implements Runnable{
+public class PiServer {
 	
-	//public static PiServer piServer;
-	public static WireManager wireManager = null;
-	public static Launcher launcher = null;
-	public static Remote remote = null;
-	public static LightServer server = null;
+	public static final String VERSION = "2.0";
+	public static final String LAUNCHPAD_NAME = "S [hw:1,0,0]";
+	public static final int WEB_SERVER_PORT = 8000;
+	public static final int SOCKET_SERVER_PORT = 3443;
 	
+	public static WireManager wireManager;
 	
-	public static boolean running = true;
+	private static ArrayList<Service> services = new ArrayList<>();
+	private static boolean isCloseRequested = false;
 	
-	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
+		Logger.log("Starting PiServer program");
 		wireManager = new WireManager();
-		remote = new Remote();
-		new Thread(new PiServer()).start();
-	}
-	
-	
-	@Override
-	public void run() {
-		while(running){
-			//try to start launchpad if avalable
-			String[] deviceNames = MidiCommon.listDevices(true, true);
-			Arrays.asList(deviceNames).contains(Launcher.NAME);
-			if(launcher == null && Arrays.asList(deviceNames).contains(Launcher.NAME)){
-				try{
-					launcher = new Launcher();
-				}catch(Exception e){
-					launcher = null;
+		
+		Logger.log("Adding Services...");
+		services.add(new WebsiteService());
+		services.add(new SocketService());
+		services.add(new LaunchpadService());
+		services.add(new RemoteService());
+		Logger.log("Adding Services done");
+		
+		while(!isCloseRequested){
+			for(Service service : services){
+				if(service.isRunning == false){
+					if(service.start() == true){
+						service.isRunning = true;
+						Logger.log("Started " + service.getName() + "!");
+					}else{
+						Logger.log("Could not start " + service.getName() + ". Lets try again in 5 seconds.");
+					}
 				}
 			}
 			
-			//try to start webserver if not yet running
-			if(server == null){
-				try {
-					server = new LightServer();
-				} catch (Exception e) {
-					e.printStackTrace();
-					server = null;
-				}
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-				
-			
 		}
 		
 	}
 
 	public static void startUpdating() {
-		System.exit(0);
-		
-	} 
+		//TODO: updating...
+	}
 	
 }

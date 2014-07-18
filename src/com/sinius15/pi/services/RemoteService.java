@@ -1,4 +1,4 @@
-package com.sinius15.pi.controllers;
+package com.sinius15.pi.services;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,8 +7,9 @@ import java.util.List;
 import jline.ConsoleReader;
 
 import com.sinius15.pi.PiServer;
+import com.sinius15.pi.Service;
 
-public class Remote {
+public class RemoteService extends Service {
 	
 	static char[][] things2d = new char[][] { { '1', '.', ',', '?', '\t' },
 			{ '2', 'a', 'b', 'c', 'A', 'B', 'C' }, { '3', 'd', 'e', 'f', 'D', 'E', 'F' },
@@ -24,12 +25,11 @@ public class Remote {
 	
 	public static ConsoleReader cr;
 	
-	public Remote() {
+	@Override
+	public boolean start() {
 		new Thread(new Runnable() {
-			
 			@Override
 			public void run() {
-				System.out.println("starting remote");
 				try {
 					cr = new ConsoleReader();
 					
@@ -46,8 +46,11 @@ public class Remote {
 				
 			}
 		}).start();
-		
+		return true;
 	}
+	
+	@Override
+	public void close() {}
 	
 	public void handleInput(char in) {
 		int button = 1;
@@ -84,5 +87,9 @@ public class Remote {
 		}
 		return vector;
 	}
-	
+
+	@Override
+	public String getName() {
+		return "Remote Controller";
+	}
 }
