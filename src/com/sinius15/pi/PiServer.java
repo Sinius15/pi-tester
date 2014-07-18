@@ -1,5 +1,10 @@
 package com.sinius15.pi;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.jsresources.MidiCommon;
+
 import com.sinius15.pi.controllers.Launcher;
 import com.sinius15.pi.controllers.Remote;
 import com.sinius15.pi.server.LightServer;
@@ -33,7 +38,9 @@ public class PiServer implements Runnable{
 	@Override
 	public void run() {
 		while(running){
-			if(launcher == null && isConnected){
+			String[] deviceNames = MidiCommon.listDevices(true, true);
+			Arrays.asList(deviceNames).contains(Launcher.NAME);
+			if(launcher == null && Arrays.asList(deviceNames).contains(Launcher.NAME)){
 				try{
 					launcher = new Launcher();
 				}catch(Exception e){
