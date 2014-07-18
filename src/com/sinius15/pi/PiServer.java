@@ -11,10 +11,10 @@ import com.sinius15.pi.server.LightServer;
 public class PiServer implements Runnable{
 	
 	//public static PiServer piServer;
-	public static WireManager wireManager;
-	public static Launcher launcher;
-	public static Remote remote;
-	public static LightServer server;
+	public static WireManager wireManager = null;
+	public static Launcher launcher = null;
+	public static Remote remote = null;
+	public static LightServer server = null;
 	
 	public static void main(String[] args) throws InterruptedException {
 		wireManager = new WireManager();
