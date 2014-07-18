@@ -11,14 +11,7 @@ import com.sinius15.pi.server.WireManager;
 
 public class PiServer implements Runnable{
 	
-	public PiServer() {
-		LightServer server = new LightServer();
-		Thread serverThread = new Thread(server);
-		serverThread.start();
-	}
-	
-	// publci static part
-	public static PiServer ligtController;
+	public static PiServer piServer;
 	public static WireManager wireManager;
 	public static Launcher launcher;
 	public static Remote remote;
@@ -26,8 +19,11 @@ public class PiServer implements Runnable{
 	public static void main(String[] args) throws InterruptedException {
 		if(args.length == 0){
 			wireManager = new WireManager();
-			ligtController = new PiServer();	 
 		}
+		
+		LightServer server = new LightServer();
+		Thread serverThread = new Thread(server);
+		serverThread.start();
 		
 		remote = new Remote();
 		 
