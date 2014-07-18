@@ -19,7 +19,7 @@ public class WebsiteService extends Service implements HttpHandler {
 		try {
 			server = HttpServer.create(new InetSocketAddress(8000), 0);
 			server.createContext("/", this);
-			server.setExecutor(null);
+			server.setExecutor(null); 
 			server.start();
 		} catch (Exception e) {
 			return false;
