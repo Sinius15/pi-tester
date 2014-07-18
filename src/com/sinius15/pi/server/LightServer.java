@@ -10,6 +10,7 @@ public class LightServer implements Runnable{
 	
 	public LightServer() throws Exception{
 		serverSocket = new ServerSocket(port);
+		new Thread(this).start();
 	}
 
 	@Override
