@@ -3,6 +3,7 @@ package com.sinius15.pi;
 import java.util.ArrayList;
 
 import com.sinius15.pi.services.LaunchpadService;
+import com.sinius15.pi.services.RemoteService;
 import com.sinius15.pi.services.SocketService;
 import com.sinius15.pi.services.WebsiteService;
 
@@ -26,7 +27,7 @@ public class PiServer {
 		services.add(new WebsiteService());
 		services.add(new SocketService());
 		services.add(new LaunchpadService());
-		//services.add(new RemoteService());
+		services.add(new RemoteService());
 		Logger.log("Adding Services done");
 		
 		while(!isCloseRequested){

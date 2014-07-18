@@ -13,19 +13,16 @@ public class Logger {
 				+ "] [error]" + e.getMessage());
 		for (StackTraceElement element : e.getStackTrace())
 			logs.add("- [trace] " + element.toString());
-		e.printStackTrace();
 	}
 	
 	public static void log(String in) {
 		logs.add("[" + new SimpleDateFormat("dd.MM.yyy HH:mm:ss + SS").format(new Date())
 				+ "] [log]" + in);
-		System.out.println(in);
 	}
 	
 	public static void logErr(String in) {
 		logs.add("[" + new SimpleDateFormat("dd.MM.yyy HH:mm:ss + SS").format(new Date())
 				+ "] [error]" + in);
-		System.err.println(in);
 	}
 	
 	public static String getWebString() {

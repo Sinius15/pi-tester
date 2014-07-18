@@ -36,6 +36,7 @@ public class WebsiteService extends Service implements HttpHandler {
 	@Override
 	public void handle(HttpExchange t) throws IOException {
 		String response = Logger.getWebString();
+		t.getResponseHeaders().set("Content-Type", "text/html");
 		t.sendResponseHeaders(200, response.length());
 		OutputStream os = t.getResponseBody();
 		os.write(response.getBytes());
