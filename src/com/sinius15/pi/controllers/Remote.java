@@ -22,13 +22,14 @@ public class Remote {
 		things1d = to1d(things2d);
 	}
 	
+	public static ConsoleReader cr;
+	
 	public Remote() {
 		new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
 				System.out.println("starting remote");
-				ConsoleReader cr;
 				try {
 					cr = new ConsoleReader();
 					
