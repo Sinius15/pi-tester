@@ -42,6 +42,7 @@ public class PiServer implements Runnable{
 				try {
 					server = new LightServer();
 				} catch (Exception e) {
+					e.printStackTrace();
 					server = null;
 				}
 			}
