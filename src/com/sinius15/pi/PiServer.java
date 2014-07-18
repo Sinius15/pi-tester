@@ -16,12 +16,16 @@ public class PiServer implements Runnable{
 	public static Remote remote = null;
 	public static LightServer server = null;
 	
+	
+	public static boolean running = true;
+	
+	
 	public static void main(String[] args) throws InterruptedException {
 		wireManager = new WireManager();
 		remote = new Remote();
 		new Thread(new PiServer()).start();
 	}
-	boolean running = true;
+	
 	
 	@Override
 	public void run() {
