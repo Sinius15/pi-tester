@@ -8,16 +8,8 @@ public class LightServer implements Runnable{
 	public static final int port = 3443;
 	ServerSocket serverSocket;
 	
-	public LightServer(){
-		
-		try {
-			serverSocket = new ServerSocket(port);
-		} catch (IOException e) {
-			e.printStackTrace();
-			try {
-				serverSocket.close();
-			} catch (IOException e1) {}
-		}
+	public LightServer() throws Exception{
+		serverSocket = new ServerSocket(port);
 	}
 
 	@Override
