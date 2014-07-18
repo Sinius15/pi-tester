@@ -1,4 +1,4 @@
-package com.sinius15.pi.server;
+package com.sinius15.pi;
 
 import java.io.Closeable;
 import java.io.IOException;

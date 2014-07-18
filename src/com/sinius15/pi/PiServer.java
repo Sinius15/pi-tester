@@ -7,7 +7,6 @@ import org.jsresources.MidiCommon;
 import com.sinius15.pi.controllers.Launcher;
 import com.sinius15.pi.controllers.Remote;
 import com.sinius15.pi.server.LightServer;
-import com.sinius15.pi.server.WireManager;
 
 public class PiServer implements Runnable{
 	
