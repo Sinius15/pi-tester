@@ -34,9 +34,10 @@ public class PiServer implements Runnable{
 	public void run() {
 		while(running){
 			try{
-				launcher = new Launcher();
+				if(launcher == null)
+					launcher = new Launcher();
 			}catch(Exception e){
-				
+				launcher = null;
 			}
 		}
 		
