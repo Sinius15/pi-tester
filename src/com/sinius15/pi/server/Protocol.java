@@ -53,6 +53,7 @@ public class Protocol {
 				return "succes_state_on";
 			return "succes_state_off";
 		}
+		if (in.startsWith("restart"))
 		return "error_invalid_request";
 	}
 	
