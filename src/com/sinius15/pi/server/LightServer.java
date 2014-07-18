@@ -24,7 +24,7 @@ public class LightServer implements Runnable{
 		while(!serverSocket.isClosed()){
 			System.out.println("e");
 			try {
-				System.out.println("f");
+				System.out.println("f"); 
 				new ClientThread(serverSocket.accept()).start();
 			} catch (IOException e) {
 				e.printStackTrace();
