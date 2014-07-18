@@ -19,7 +19,7 @@ public class PiServer implements Runnable{
 	public static void main(String[] args) throws InterruptedException {
 		wireManager = new WireManager();
 		remote = new Remote();
-		new Thread(new PiServer()).start();;
+		new Thread(new PiServer()).start();
 	}
 	boolean running = true;
 	
