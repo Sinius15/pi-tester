@@ -33,12 +33,14 @@ public class PiServer implements Runnable{
 	@Override
 	public void run() {
 		while(running){
-			try{
-				if(launcher == null)
+			if(launcher == null && isConnected){
+				try{
 					launcher = new Launcher();
-			}catch(Exception e){
-				launcher = null;
+				}catch(Exception e){
+					launcher = null;
+				}
 			}
+			
 		}
 		
 	} 
