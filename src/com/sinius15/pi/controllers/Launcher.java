@@ -6,10 +6,11 @@ import com.sinius15.pi.PiServer;
 
 public class Launcher implements LaunchListener {
 	
+	public static final String NAME = "S [hw:1,0,0]";
 	public Launchpad pad;
 	
 	public Launcher() throws Exception{
-		pad = new Launchpad("S [hw:1,0,0]");
+		pad = new Launchpad(NAME);
 		pad.open(); 
 		pad.addListener(this);
 		PiServer.wireManager.onChangeListeners.add(onChange);
