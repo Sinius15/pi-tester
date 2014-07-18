@@ -54,7 +54,8 @@ public class Protocol {
 			return "succes_state_off";
 		}
 		if (in.startsWith("restart")){
-			
+			return "succes";
+			PiServer.startUpdating();
 		}
 		return "error_invalid_request";
 	}
