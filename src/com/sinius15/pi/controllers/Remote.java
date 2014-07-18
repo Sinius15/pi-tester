@@ -23,21 +23,29 @@ public class Remote {
 	}
 	
 	public Remote() {
-		
-		System.out.println("starting remote");
-		ConsoleReader cr;
-		try {
-			cr = new ConsoleReader();
+		new Thread(new Runnable() {
 			
-			while (true) {
-				char in = (char) cr.readCharacter(things1d);
-				handleInput(in);
-				cr.printNewline();
-				cr.printString("Input character: " + in);
+			@Override
+			public void run() {
+				System.out.println("starting remote");
+				ConsoleReader cr;
+				try {
+					cr = new ConsoleReader();
+					
+					while (true) {
+						char in = (char) cr.readCharacter(things1d);
+						handleInput(in);
+						cr.printNewline();
+						cr.printString("Input character: " + in);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		}).start();
+		
 	}
 	
 	public void handleInput(char in) {
