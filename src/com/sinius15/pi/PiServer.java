@@ -29,6 +29,7 @@ public class PiServer implements Runnable{
 		 
 	}
 	boolean running = true;
+	
 	@Override
 	public void run() {
 		while(running){
