@@ -11,17 +11,12 @@ public class Launcher implements LaunchListener {
 	
 	public Launchpad pad;
 	
-	public Launcher() {
-		try {
-			pad = new Launchpad("S [hw:1,0,0]");
-			pad.open(); 
-			pad.addListener(this);
-			PiServer.wireManager.onChangeListeners.add(onChange);
-			System.out.println("Found launchpad!");
-		} catch (LaunchpadException | MidiUnavailableException e) {
-			e.printStackTrace();
-			System.err.println("Could not find launchpad.");
-		}
+	public Launcher() throws Exception{
+		pad = new Launchpad("S [hw:1,0,0]");
+		pad.open(); 
+		pad.addListener(this);
+		PiServer.wireManager.onChangeListeners.add(onChange);
+		System.out.println("Found launchpad!");
 		
 	}
 	
