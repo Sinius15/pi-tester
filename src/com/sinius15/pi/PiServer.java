@@ -5,7 +5,7 @@ import com.sinius15.pi.controllers.Remote;
 import com.sinius15.pi.server.LightServer;
 import com.sinius15.pi.server.WireManager;
 
-public class PiServer {
+public class PiServer implements Runnable{
 	
 	public PiServer() {
 		LightServer server = new LightServer();
@@ -23,9 +23,21 @@ public class PiServer {
 			wireManager = new WireManager();
 			ligtController = new PiServer();	 
 		}
-		launcher = new Launcher();
+		
 		new Remote();
 		 
+	}
+	boolean running = true;
+	@Override
+	public void run() {
+		while(running){
+			try{
+				launcher = new Launcher();
+			}catch(Exception e){
+				
+			}
+		}
+		
 	} 
 	
 }
