@@ -52,7 +52,7 @@ public class PiServer implements Runnable{
 	}
 
 	public static void startUpdating() {
-		
+		System.exit(0);
 		
 	} 
 	
