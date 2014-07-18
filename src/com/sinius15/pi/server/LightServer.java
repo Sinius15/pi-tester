@@ -3,6 +3,8 @@ package com.sinius15.pi.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 
+import com.sinius15.pi.PiServer;
+
 public class LightServer implements Runnable{
 	
 	public static final int port = 3443;
@@ -25,7 +27,7 @@ public class LightServer implements Runnable{
 		try {
 			serverSocket.close();
 		} catch (IOException e) {}
-		
+		PiServer.server = null;
 		
 	}
 	
