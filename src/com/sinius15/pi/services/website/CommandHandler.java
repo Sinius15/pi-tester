@@ -12,7 +12,7 @@ public class CommandHandler implements HttpHandler {
 
 	@Override
 	public void handle(HttpExchange t) throws IOException {
-		String request = t.getRequestURI().toString().split("/")[1];
+		String request = t.getRequestURI().toString().split("/")[2];
 		request = request.replaceAll("%20", " ");
 		
 		String response = Protocol.handle(request);
