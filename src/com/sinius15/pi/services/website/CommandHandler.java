@@ -32,6 +32,7 @@ public class CommandHandler implements HttpHandler {
 		OutputStream os = t.getResponseBody();
 		os.write(response.getBytes());
 		os.close();
+		t.close();
 	}
 	
 }
