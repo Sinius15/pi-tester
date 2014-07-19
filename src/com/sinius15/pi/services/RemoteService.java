@@ -8,6 +8,7 @@ import jline.ConsoleReader;
 
 import com.sinius15.pi.PiServer;
 import com.sinius15.pi.Service;
+import com.sinius15.pi.logging.Logger;
 
 public class RemoteService extends Service {
 	
@@ -38,6 +39,7 @@ public class RemoteService extends Service {
 						handleInput(in);
 						cr.printNewline();
 						cr.printString("Input character: " + in);
+						Logger.log(new Exception("just a little test examption"));
 					}
 				} catch (IOException e) {
 					e.printStackTrace();

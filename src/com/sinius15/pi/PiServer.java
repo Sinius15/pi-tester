@@ -2,6 +2,7 @@ package com.sinius15.pi;
 
 import java.util.ArrayList;
 
+import com.sinius15.pi.logging.Logger;
 import com.sinius15.pi.services.LaunchpadService;
 import com.sinius15.pi.services.RemoteService;
 import com.sinius15.pi.services.SocketService;

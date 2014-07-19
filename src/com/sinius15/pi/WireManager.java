@@ -9,6 +9,7 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
+import com.sinius15.pi.logging.Logger;
 
 public class WireManager implements Closeable{
 	

@@ -3,9 +3,9 @@ package com.sinius15.pi.services;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-import com.sinius15.pi.Logger;
 import com.sinius15.pi.PiServer;
 import com.sinius15.pi.Service;
+import com.sinius15.pi.logging.Logger;
 import com.sinius15.pi.services.socketserver.ClientThread;
 
 public class SocketService extends Service implements Runnable{
