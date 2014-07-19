@@ -3,7 +3,7 @@ package com.sinius15.pi.services.website;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.sinius15.pi.logging.Logger;
+import com.sinius15.pi.services.socketserver.Protocol;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -11,10 +11,10 @@ public class CommandHandler implements HttpHandler {
 
 	@Override
 	public void handle(HttpExchange t) throws IOException {
-		Logger.logErr("uri: " + t.getRequestURI().toString());
-		Logger.logErr("method: " + t.getRequestMethod());
+		String request = t.getRequestURI().toString().split("/")[1];
+		request = request.replaceAll("%20", " ");
 		
-		String response = "<html><body>";
+		String response = Protocol.handle(request);
 		
 		t.getResponseHeaders().set("Content-Type", "text/html");
 		t.sendResponseHeaders(200, response.length());

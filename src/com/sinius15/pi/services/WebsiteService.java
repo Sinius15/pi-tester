@@ -15,8 +15,8 @@ public class WebsiteService extends Service {
 	public boolean start() {
 		try {
 			server = HttpServer.create(new InetSocketAddress(8000), 0);
-			server.createContext("/logging/", new LogInfoHandler());
-			server.createContext("/api/", new CommandHandler());
+			server.createContext("/logging", new LogInfoHandler());
+			server.createContext("/api", new CommandHandler());
 			server.setExecutor(null); 
 			server.start();
 		} catch (Exception e) {
