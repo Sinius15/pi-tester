@@ -31,14 +31,15 @@ public class PiServer {
 		services.add(new RemoteService());
 		Logger.log("Adding Services done");
 		
-		while(!isCloseRequested){
-			for(Service service : services){
-				if(service.isRunning == false){
-					if(service.start() == true){
+		while (!isCloseRequested) {
+			for (Service service : services) {
+				if (service.isRunning == false) {
+					if (service.start() == true) {
 						service.isRunning = true;
 						Logger.log("Started " + service.getName() + "!");
-					}else{
-						//Logger.log("Could not start " + service.getName() + ". Lets try again in 5 seconds.");
+					} else {
+						// Logger.log("Could not start " + service.getName() +
+						// ". Lets try again in 5 seconds.");
 					}
 				}
 			}
@@ -51,9 +52,13 @@ public class PiServer {
 		}
 		
 	}
-
+	
 	public static void startUpdating() {
-		//TODO: updating...
+		// TODO: updating...
 	}
 	
+	public static boolean checkPassword(String pass) {
+		// TODO: maby somtime return false?
+		return true;
+	}
 }

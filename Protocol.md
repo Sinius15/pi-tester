@@ -23,6 +23,7 @@ Respons list
 * ``error_invalid_argument``
 * ``error_invalid_request``
 * ``error_internal_server_problem``
+* ``error_invalid_password``
 * ``succes``
 * ``succes_state_on``
 * ``succes_state_off``
