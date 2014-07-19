@@ -15,7 +15,7 @@ public class Logger {
 			message[i] = element.toString();
 			i++;
 		}
-		new LogMessage(LogMessage.ERROR, message);
+		logs.add(new LogMessage(LogMessage.ERROR, message));
 	}
 	
 	public static void log(String in) {
