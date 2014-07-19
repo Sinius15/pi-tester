@@ -9,8 +9,9 @@ public class Logger {
 	public static List<LogMessage> logs = new ArrayList<>();
 	
 	public static void log(Exception e) {
-		String[] message = new String[e.getStackTrace().length];
-		int i = 0;
+		String[] message = new String[e.getStackTrace().length+1];
+		message[0] = e.getMessage();
+		int i = 1;
 		for (StackTraceElement element : e.getStackTrace()){
 			message[i] = element.toString();
 			i++;

@@ -26,7 +26,7 @@ public class LogMessage {
 	
 	public String MessageString() {
 		String out = "";
-		out += "<p style='color="+getHTMLColor()+"'>";
+		out += "<p style='color:"+getHTMLColor()+"'>";
 		for(String msg : message){
 			out += msg + "<br>"; 
 		}

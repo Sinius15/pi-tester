@@ -38,7 +38,7 @@ public class PiServer {
 						service.isRunning = true;
 						Logger.log("Started " + service.getName() + "!");
 					}else{
-						Logger.log("Could not start " + service.getName() + ". Lets try again in 5 seconds.");
+						//Logger.log("Could not start " + service.getName() + ". Lets try again in 5 seconds.");
 					}
 				}
 			}
