@@ -3,6 +3,7 @@ package com.sinius15.pi.services.website;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import com.sinius15.pi.logging.Logger;
 import com.sinius15.pi.services.socketserver.Protocol;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -15,6 +16,8 @@ public class CommandHandler implements HttpHandler {
 		request = request.replaceAll("%20", " ");
 		
 		String response = Protocol.handle(request);
+		
+		Logger.log("Got GET request on api server: '" + t.getRequestURI() + "'. After decoding input is '" + request + "'");
 		
 		t.getResponseHeaders().set("Content-Type", "text/html");
 		t.sendResponseHeaders(200, response.length());
