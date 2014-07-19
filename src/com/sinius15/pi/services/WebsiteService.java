@@ -1,16 +1,13 @@
 package com.sinius15.pi.services;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 import com.sinius15.pi.Service;
-import com.sinius15.pi.logging.Logger;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
+import com.sinius15.pi.services.website.CommandHandler;
+import com.sinius15.pi.services.website.LogInfoHandler;
 import com.sun.net.httpserver.HttpServer;
 
-public class WebsiteService extends Service implements HttpHandler {
+public class WebsiteService extends Service {
 	
 	private HttpServer server;
 	
@@ -18,7 +15,8 @@ public class WebsiteService extends Service implements HttpHandler {
 	public boolean start() {
 		try {
 			server = HttpServer.create(new InetSocketAddress(8000), 0);
-			server.createContext("/", this);
+			server.createContext("/logging/", new LogInfoHandler());
+			server.createContext("/api/", new CommandHandler());
 			server.setExecutor(null); 
 			server.start();
 		} catch (Exception e) {
@@ -31,18 +29,6 @@ public class WebsiteService extends Service implements HttpHandler {
 	@Override
 	public void close() {
 		server.stop(0);
-	}
-	
-	@Override
-	public void handle(HttpExchange t) throws IOException {
-		String response = "<html><body>";
-		response += Logger.getWebString();
-		response += "</body></html>";
-		t.getResponseHeaders().set("Content-Type", "text/html");
-		t.sendResponseHeaders(200, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
 	}
 
 	@Override

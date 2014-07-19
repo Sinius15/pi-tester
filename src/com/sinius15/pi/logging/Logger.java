@@ -9,10 +9,10 @@ public class Logger {
 	public static List<LogMessage> logs = new ArrayList<>();
 	
 	public static void log(Exception e) {
-		String[] message = new String[e.getStackTrace().length+1];
+		String[] message = new String[e.getStackTrace().length + 1];
 		message[0] = e.getMessage();
 		int i = 1;
-		for (StackTraceElement element : e.getStackTrace()){
+		for (StackTraceElement element : e.getStackTrace()) {
 			message[i] = element.toString();
 			i++;
 		}
@@ -32,14 +32,19 @@ public class Logger {
 		
 		for (LogMessage s : logs) {
 			out += "<tr>";
-			out += "<td>" + new SimpleDateFormat("dd.MM.yyy HH:mm:ss SSS").format(s.getTime()) + "</td>";
+			out += "<td>" + new SimpleDateFormat("dd.MM.yyy HH:mm:ss SSS").format(s.getTime())
+					+ "</td>";
 			out += "<td>" + s.getTypeString() + "</td>";
 			out += "<td>" + s.MessageString() + "</td>";
 			out += "</tr>";
 		}
-		out+= "</table>";
+		out += "</table>";
 		
 		return out;
+	}
+	
+	public static void logDebug(String in) {
+		logs.add(new LogMessage(LogMessage.DEBUG, in));
 	}
 	
 }

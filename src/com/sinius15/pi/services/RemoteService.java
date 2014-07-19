@@ -39,7 +39,7 @@ public class RemoteService extends Service {
 						handleInput(in);
 						cr.printNewline();
 						cr.printString("Input character: " + in);
-						Logger.log(new Exception("just a little test examption"));
+						Logger.logDebug("Input character: " + in);
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
