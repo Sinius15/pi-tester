@@ -25,6 +25,8 @@ public class CommandHandler implements HttpHandler {
 
 		
 		t.getResponseHeaders().set("Content-Type", "text/html");
+		t.getResponseHeaders().set("Access-Control-Allow-Origin", "http://sinius15.com");
+		
 		t.sendResponseHeaders(200, response.length());
 		OutputStream os = t.getResponseBody();
 		os.write(response.getBytes());
