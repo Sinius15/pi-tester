@@ -1,6 +1,7 @@
 package com.sinius15.pi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.sinius15.pi.logging.Logger;
 import com.sinius15.pi.services.LaunchpadService;
@@ -57,8 +58,13 @@ public class PiServer {
 		// TODO: updating...
 	}
 	
-	public static boolean checkPassword(String pass) {
-		// TODO: maby somtime return false?
-		return true;
+	private static final String[] avalableCommands = new String[]{"on 6", "on 7", "on 8", "off 6", "off 7", "off 8"};
+	
+	public static boolean checkPermission(String pass, String in) {
+		if(pass == null)
+			return true;
+		if(Arrays.asList(avalableCommands).contains(in))
+			return true;
+		return false;
 	}
 }

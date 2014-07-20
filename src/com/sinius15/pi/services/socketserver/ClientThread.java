@@ -29,7 +29,7 @@ public class ClientThread extends Thread {
 			
 			while((inputLine = in.readLine()) != null){
 				Logger.log("Client " + clientSocket.getInetAddress() + " issued command " + inputLine);
-				out.println(Protocol.handle(inputLine));
+				out.println(Protocol.handle(inputLine, null));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

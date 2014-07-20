@@ -4,8 +4,12 @@ import com.sinius15.pi.PiServer;
 
 public class Protocol {
 	
-	public static String handle(String in) {
+	public static String handle(String in, String password) {
 		int argCount = in.split(" ", -1).length;
+		
+		if(!PiServer.checkPermission(password, in)){
+			return "error_invalid_permission";
+		}
 		
 		if (in.startsWith("on")) {
 			if (argCount != 2)
