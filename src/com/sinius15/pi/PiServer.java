@@ -65,6 +65,8 @@ public class PiServer {
 			return true;
 		if(Arrays.asList(avalableCommands).contains(in))
 			return true;
+		if(in.startsWith("state"))
+			return true;
 		return false;
 	}
 }
