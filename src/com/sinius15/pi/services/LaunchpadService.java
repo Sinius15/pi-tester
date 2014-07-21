@@ -62,6 +62,7 @@ public class LaunchpadService extends Service implements LaunchListener{
 	
 	@Override
 	public void onButtonUp(int row, int colomn) {
+		colomn += 1;
 		if (row == 2) {
 			PiServer.wireManager.setWireState(colomn, false);
 		}
