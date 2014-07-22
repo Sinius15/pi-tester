@@ -2,11 +2,14 @@ package com.sinius15.pi.logging;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Logger {
 	
 	public static List<LogMessage> logs = new ArrayList<>();
+	
+	public static final int MAX_LOG_MESSAGES = 10;
 	
 	public static void log(Exception e) {
 		String[] message = new String[e.getStackTrace().length + 1];
@@ -28,6 +31,7 @@ public class Logger {
 	}
 	
 	public static String getWebString() {
+		update();
 		String out = "<table>";
 		
 		for (LogMessage s : logs) {
@@ -45,6 +49,18 @@ public class Logger {
 	
 	public static void logDebug(String in) {
 		logs.add(new LogMessage(LogMessage.DEBUG, in));
+	}
+	
+	private static void update(){
+		synchronized (logs) {
+			if(logs.size() > MAX_LOG_MESSAGES){
+				Collections.sort(logs);
+				for(int i = MAX_LOG_MESSAGES; i < logs.size(); i++){
+					logs.remove(i);
+				}
+			}	
+		}
+		
 	}
 	
 }

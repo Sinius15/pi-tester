@@ -2,7 +2,7 @@ package com.sinius15.pi.logging;
 
 import java.util.Date;
 
-public class LogMessage {
+public class LogMessage implements Comparable<LogMessage>{
 	
 	public static final int MESSAGE = 0, ERROR = 1, DEBUG = 2;
 	
@@ -59,5 +59,12 @@ public class LogMessage {
 				return null;
 		}
 	}
+
+	@Override
+	public int compareTo(LogMessage o) {
+		return time.compareTo(o.time);
+	}
+	
+	
 	
 }
