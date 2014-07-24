@@ -1,6 +1,5 @@
 package com.sinius15.pi;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,10 +9,11 @@ import com.sinius15.pi.services.RemoteService;
 import com.sinius15.pi.services.SocketService;
 import com.sinius15.pi.services.UpdateService;
 import com.sinius15.pi.services.WebsiteService;
+import com.sinius15.updater.StreamStreamer;
 
 public class PiServer {
 	
-	public static final String VERSION = "2.4.test";
+	public static final String VERSION = "2.4";
 	public static final String LAUNCHPAD_NAME = "S [hw:1,0,0]";
 	public static final int WEB_SERVER_PORT = 80;
 	public static final int SOCKET_SERVER_PORT = 3443;
@@ -62,14 +62,20 @@ public class PiServer {
 				"java", "-jar", "updater.jar",
 				"git_pull;reboot"
 		};
-		
-		ProcessBuilder builder = new ProcessBuilder(commands);
-		try {
-			builder.start();
-		} catch (IOException e) {
-			e.printStackTrace();
+		try{
+			ProcessBuilder builder = new ProcessBuilder(commands);
+			Process process = builder.start();
+			
+			StreamStreamer a = new StreamStreamer(process.getInputStream(), "Output");
+			StreamStreamer b = new StreamStreamer(process.getInputStream(), "Error");
+			a.start();
+			b.start();
+			while(a.isRunning() || b.isRunning()){
+				Thread.sleep(3);
+			}
+		}catch(Exception e){
+			Logger.log(e);
 		}
-		System.exit(0);
 	}
 	
 	private static final String[] avalableCommands = new String[]{"on 6", "on 7", "on 8", "off 6", "off 7", "off 8"};

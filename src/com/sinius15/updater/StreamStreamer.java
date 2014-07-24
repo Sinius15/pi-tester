@@ -10,7 +10,7 @@ public class StreamStreamer extends Thread {
 	String preString;
 	boolean running;
 	
-	StreamStreamer(InputStream is, String type) {
+	public StreamStreamer(InputStream is, String type) {
 		this.is = is;
 		this.preString = type;
 	}
