@@ -2,6 +2,7 @@ package com.sinius15.pi.services;
 
 import java.net.InetSocketAddress;
 
+import com.sinius15.pi.PiServer;
 import com.sinius15.pi.Service;
 import com.sinius15.pi.services.website.CommandHandler;
 import com.sinius15.pi.services.website.LogInfoHandler;
@@ -14,7 +15,7 @@ public class WebsiteService extends Service {
 	@Override
 	public boolean start() {
 		try {
-			server = HttpServer.create(new InetSocketAddress(80), 0);
+			server = HttpServer.create(new InetSocketAddress(PiServer.WEB_SERVER_PORT), 0);
 			server.createContext("/logging", new LogInfoHandler());
 			server.createContext("/api", new CommandHandler());
 			server.setExecutor(null); 
