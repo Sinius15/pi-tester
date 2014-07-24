@@ -1,8 +1,6 @@
 package com.sinius15.updater;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 
 /**
  * This is a super small application. You give the program arguments and that
@@ -32,22 +30,18 @@ public class Updater {
 		for (String command : args) {
 			if (command.equals(""))
 				continue;
-			
+			System.out.println("now running command: " + command);
 			try {
 				ProcessBuilder builder = new ProcessBuilder(args);
+				builder.redirectErrorStream(true);
 				if (startDir != null)
 					builder.directory(startDir);
 				Process process = builder.start();
 				
-				BufferedReader r = new BufferedReader(new InputStreamReader(
-						process.getInputStream(), "UTF-8"));
-				String line;
-				while ((line = r.readLine()) != null) {
-					System.out.println(line);
-				}
-				r.close();
+				new StreamStreamer(process.getInputStream(), "Output").start();
+				new StreamStreamer(process.getInputStream(), "Error").start();
 			} catch (Exception e) {
-				
+				e.printStackTrace();
 			}
 			
 		}
