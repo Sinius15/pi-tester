@@ -59,7 +59,7 @@ public class PiServer {
 	
 	public static void startUpdating() {
 		String[] commands = new String[]{
-				"sudo java -jar updater.jar",
+				"java", "-jar", "updater.jar",
 				"git_pull;reboot"
 		};
 		
