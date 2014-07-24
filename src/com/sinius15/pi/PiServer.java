@@ -9,7 +9,6 @@ import com.sinius15.pi.services.RemoteService;
 import com.sinius15.pi.services.SocketService;
 import com.sinius15.pi.services.UpdateService;
 import com.sinius15.pi.services.WebsiteService;
-import com.sinius15.updater.StreamStreamer;
 
 public class PiServer {
 	 
@@ -24,15 +23,17 @@ public class PiServer {
 	private static boolean isCloseRequested = false;
 	
 	public static void main(String[] args) {
+		
 		Logger.log("Starting PiServer program");
 		wireManager = new WireManager();
 		
 		Logger.log("Adding Services...");
-		services.add(new UpdateService());
+		services.add(new RemoteService());
 		services.add(new WebsiteService());
 		services.add(new SocketService());
 		services.add(new LaunchpadService());
-		services.add(new RemoteService());
+		services.add(new UpdateService());
+		
 		Logger.log("Adding Services done");
 		
 		while (!isCloseRequested) {
