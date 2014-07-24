@@ -56,6 +56,7 @@ public class Logger {
 	public static void showInConsole(String str){
 		try {
 			RemoteService.cr.printString(str);
+			RemoteService.cr.printNewline();
 		} catch (IOException e) {
 			log(e);
 		}
