@@ -32,6 +32,23 @@ public class WireManager implements Closeable{
 				gpio.provisionDigitalOutputPin(RaspiPin.GPIO_08, "gpio 8", PinState.LOW),
 		};
 		
+		for(int i = 1; i <= 8; i++){
+			setWireState(i, true);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		for(int i = 1; i <= 8; i++){
+			setWireState(i, false);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		Logger.log("Initializing WireManager Done");
 	}
 	
