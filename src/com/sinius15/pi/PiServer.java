@@ -62,7 +62,7 @@ public class PiServer {
 				"sudo java -jar updater.jar",
 				"sudo wget https://github.com/Sinius15/pi-tester/raw/master/pi.jar",
 				"sudo wget https://github.com/Sinius15/pi-tester/raw/master/latestVersion.txt",
-				"sudo java -jar pi.jar"
+				"sudo reboot"
 		};
 		
 		ProcessBuilder builder = new ProcessBuilder(commands);
