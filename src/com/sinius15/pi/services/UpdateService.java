@@ -19,8 +19,11 @@ public class UpdateService extends Service {
 	public boolean start() {
 		try {
 			String curVersion = WebUtil.getWebContent(new URL("https://raw.githubusercontent.com/Sinius15/pi-tester/master/latestVersion.txt")).trim();
-			if(isLogged == false)
+			if(isLogged == false){
 				Logger.log("Current version: " + curVersion);
+				isLogged = true;
+			}
+				
 			if(PiServer.VERSION.equals(curVersion))
 				return false;
 			///so, we need to update :(

@@ -13,7 +13,7 @@ import com.sinius15.pi.services.WebsiteService;
 
 public class PiServer {
 	
-	public static final String VERSION = "2.0";
+	public static final String VERSION = "2.1";
 	public static final String LAUNCHPAD_NAME = "S [hw:1,0,0]";
 	public static final int WEB_SERVER_PORT = 8000;
 	public static final int SOCKET_SERVER_PORT = 3443;
@@ -61,6 +61,7 @@ public class PiServer {
 		String[] commands = new String[]{
 				"sudo java -jar updater.jar",
 				"sudo wget https://github.com/Sinius15/pi-tester/raw/master/pi.jar",
+				"sudo wget https://github.com/Sinius15/pi-tester/raw/master/latestVersion.txt",
 				"sudo java -jar pi.jar"
 		};
 		
