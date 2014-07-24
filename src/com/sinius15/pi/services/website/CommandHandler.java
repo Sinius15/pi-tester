@@ -14,19 +14,17 @@ public class CommandHandler implements HttpHandler {
 	public void handle(HttpExchange t) throws IOException {
 		String[] split = t.getRequestURI().toString().split("/");
 		
-		
 		String password = split[2];
 		String command = split[3].replaceAll("%20", " ");
-		
-		
-		Logger.log("Got GET request on api server: '" + t.getRequestURI() + "'. After decoding input is '" + command + "' and password is '" + password + "'. IP: ");
-		
-		for(String key : t.getRequestHeaders().keySet()){
-			java.util.List<String> heads = t.getRequestHeaders().get(key);
-			for(String s : heads){
-				System.out.println(key + " : " + s);
-			}
+		String ip;
+		try{
+			ip = t.getRequestHeaders().get("Host").get(0);
+		}catch(Exception e){
+			Logger.log("Someone tryed to do a GET request, but no Host was defined. So ignoring request.");
+			return;
 		}
+		Logger.log("Got GET request on api server: '" + t.getRequestURI() + "'. After decoding input is '" + command + "' and password is '" + password + "'. IP: " + ip);
+		
 		
 
 		String response = Protocol.handle(command, password);
