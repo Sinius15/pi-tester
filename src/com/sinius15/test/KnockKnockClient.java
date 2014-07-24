@@ -22,7 +22,7 @@ public class KnockKnockClient {
 	public static void main(String[] args) throws IOException {
 		
 		try {
-			System.out.println(WebUtil.getWebContent(new URL("")));
+			System.out.println(WebUtil.getWebContent(new URL("https://raw.githubusercontent.com/Sinius15/pi-tester/master/latestVersion.txt")));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
