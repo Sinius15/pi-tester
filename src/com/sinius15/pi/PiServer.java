@@ -57,27 +57,6 @@ public class PiServer {
 		
 	}
 	
-	public static void startUpdating() {
-		String[] commands = new String[]{
-				"java", "-jar", "updater.jar",
-				"git_pull*reboot"
-		};
-		try{
-			ProcessBuilder builder = new ProcessBuilder(commands);
-			Process process = builder.start();
-			
-			StreamStreamer a = new StreamStreamer(process.getInputStream(), "Output", true);
-			StreamStreamer b = new StreamStreamer(process.getInputStream(), "Error", true);
-			a.start();
-			b.start();
-			while(a.isRunning() || b.isRunning()){
-				Thread.sleep(3);
-			}
-		}catch(Exception e){
-			Logger.log(e);
-		}
-	}
-	
 	private static final String[] avalableCommands = new String[]{"on 6", "on 7", "on 8", "off 6", "off 7", "off 8"};
 	
 	public static boolean checkPermission(String pass, String in) {
