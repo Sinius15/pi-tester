@@ -60,7 +60,7 @@ public class PiServer {
 	public static void startUpdating() {
 		String[] commands = new String[]{
 				"java", "-jar", "updater.jar",
-				"git_pull;reboot"
+				"git_pull*reboot"
 		};
 		try{
 			ProcessBuilder builder = new ProcessBuilder(commands);
