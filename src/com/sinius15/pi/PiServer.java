@@ -12,8 +12,8 @@ import com.sinius15.pi.services.WebsiteService;
 import com.sinius15.updater.StreamStreamer;
 
 public class PiServer {
-	
-	public static final String VERSION = "2.4";
+	 
+	public static final String VERSION = "2.4a";
 	public static final String LAUNCHPAD_NAME = "S [hw:1,0,0]";
 	public static final int WEB_SERVER_PORT = 80;
 	public static final int SOCKET_SERVER_PORT = 3443;
