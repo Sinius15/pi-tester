@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 public class StreamStreamer extends Thread { 
 	InputStream is;
 	String preString;
+	boolean running;
 	
 	StreamStreamer(InputStream is, String type) {
 		this.is = is;
@@ -16,6 +17,7 @@ public class StreamStreamer extends Thread {
 	 
 	@Override
 	public void run() {
+		running = true;
 		try {
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
@@ -24,6 +26,12 @@ public class StreamStreamer extends Thread {
 				System.out.println(preString + "> " + line);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
+		}finally{
+			running = false;
 		}
+	}
+	
+	public boolean isRunning(){
+		return running;
 	}
 }

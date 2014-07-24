@@ -42,8 +42,13 @@ public class Updater {
 					builder.directory(startDir);
 				Process process = builder.start();
 				
-				new StreamStreamer(process.getInputStream(), "Output").start();
-				new StreamStreamer(process.getInputStream(), "Error").start();
+				StreamStreamer a = new StreamStreamer(process.getInputStream(), "Output");
+				StreamStreamer b = new StreamStreamer(process.getInputStream(), "Error");
+				a.start();
+				b.start();
+				while(a.isRunning() || b.isRunning()){
+					Thread.sleep(3);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
