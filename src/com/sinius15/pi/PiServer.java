@@ -13,7 +13,7 @@ import com.sinius15.updater.StreamStreamer;
 
 public class PiServer {
 	 
-	public static final String VERSION = "2.4a";
+	public static final String VERSION = "2.5";
 	public static final String LAUNCHPAD_NAME = "S [hw:1,0,0]";
 	public static final int WEB_SERVER_PORT = 80;
 	public static final int SOCKET_SERVER_PORT = 3443;
@@ -66,8 +66,8 @@ public class PiServer {
 			ProcessBuilder builder = new ProcessBuilder(commands);
 			Process process = builder.start();
 			
-			StreamStreamer a = new StreamStreamer(process.getInputStream(), "Output");
-			StreamStreamer b = new StreamStreamer(process.getInputStream(), "Error");
+			StreamStreamer a = new StreamStreamer(process.getInputStream(), "Output", true);
+			StreamStreamer b = new StreamStreamer(process.getInputStream(), "Error", true);
 			a.start();
 			b.start();
 			while(a.isRunning() || b.isRunning()){

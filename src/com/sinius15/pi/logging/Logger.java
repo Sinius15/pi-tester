@@ -1,8 +1,11 @@
 package com.sinius15.pi.logging;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import com.sinius15.pi.services.RemoteService;
 
 public class Logger {
 	
@@ -48,6 +51,14 @@ public class Logger {
 	
 	public static void logDebug(String in) {
 		logs.add(new LogMessage(LogMessage.DEBUG, in));
+	}
+	
+	public static void showInConsole(String str){
+		try {
+			RemoteService.cr.printString(str);
+		} catch (IOException e) {
+			log(e);
+		}
 	}
 	
 	private static void update(){
