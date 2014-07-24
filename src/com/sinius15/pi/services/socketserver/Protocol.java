@@ -1,6 +1,7 @@
 package com.sinius15.pi.services.socketserver;
 
 import com.sinius15.pi.PiServer;
+import com.sinius15.pi.services.UpdateService;
 
 public class Protocol {
 	
@@ -59,7 +60,7 @@ public class Protocol {
 		}
 		if (in.startsWith("restart")){
 			
-			PiServer.startUpdating();
+			UpdateService.startUpdating();
 			//this is unreachable because 'PiServer.startUpdating()' calls System.exit().'
 			return "";
 		}

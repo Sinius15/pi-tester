@@ -43,7 +43,7 @@ public class UpdateService extends Service {
 		return "Updater";
 	}
 	
-	public void startUpdating() {
+	public static void startUpdating() {
 		String[] commands = new String[]{
 				"java", "-jar", "updater.jar",
 				"git_pull*reboot"
