@@ -5,15 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class StreamStreamer extends Thread {
+public class StreamStreamer extends Thread { 
 	InputStream is;
-	String type;
+	String preString;
 	
 	StreamStreamer(InputStream is, String type) {
 		this.is = is;
-		this.type = type;
+		this.preString = type;
 	}
-	
+	 
 	@Override
 	public void run() {
 		try {
@@ -21,7 +21,7 @@ public class StreamStreamer extends Thread {
 			BufferedReader br = new BufferedReader(isr);
 			String line = null;
 			while ((line = br.readLine()) != null)
-				System.out.println(type + "> " + line);
+				System.out.println(preString + "> " + line);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}

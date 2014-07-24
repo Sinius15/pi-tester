@@ -16,7 +16,7 @@ import java.io.File;
  * <code> updater.jar "cd /foo/" "echo 'This is a test' > test.txt"  </code><br>
  * This will  create a file test.txt in the subDir called foo.
  * 
- * @author Sinius15
+ * @author Sinius15 
  * @see www.sinius15.com
  */
 public class Updater {
