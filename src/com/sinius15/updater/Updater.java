@@ -22,6 +22,10 @@ import java.io.File;
 public class Updater {
 	
 	public static void main(String[] args) {
+		if(args.length != 1)
+			return;
+		args = args[0].replaceAll("_", " ").split(";");
+		
 		File startDir = null;
 		if (args.length > 0 && args[0].startsWith("cd ")) {
 			startDir = new File(args[0].substring(3));
