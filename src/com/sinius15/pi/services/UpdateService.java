@@ -24,7 +24,7 @@ public class UpdateService extends Service {
 				Logger.log("Current version: " + curVersion);
 				isLogged = true;
 			}
-			Logger.showInConsole("jsut collected latest version: " + curVersion);
+			//Logger.showInConsole("jsut collected latest version: " + curVersion);
 				
 			if(!PiServer.VERSION.equals(curVersion))
 				startUpdating();
