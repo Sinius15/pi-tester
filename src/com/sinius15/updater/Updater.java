@@ -36,7 +36,7 @@ public class Updater {
 				continue;
 			System.out.println("now running command: " + command);
 			try {
-				ProcessBuilder builder = new ProcessBuilder(args);
+				ProcessBuilder builder = new ProcessBuilder(command);
 				builder.redirectErrorStream(true);
 				if (startDir != null)
 					builder.directory(startDir);
