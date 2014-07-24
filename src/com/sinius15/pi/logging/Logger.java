@@ -3,11 +3,10 @@ package com.sinius15.pi.logging;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Logger {
 	
-	public static List<LogMessage> logs = new ArrayList<>();
+	public static ArrayList<LogMessage> logs = new ArrayList<>();
 	
 	public static final int MAX_LOG_MESSAGES = 150;
 	
@@ -54,8 +53,8 @@ public class Logger {
 	private static void update(){
 		if(logs.size() > MAX_LOG_MESSAGES){
 			Collections.sort(logs);
-			for(int i = MAX_LOG_MESSAGES; i < logs.size(); i++){
-				logs.remove(i);
+			while(logs.size() > MAX_LOG_MESSAGES){
+				logs.remove(0);
 			}
 		}	
 		
