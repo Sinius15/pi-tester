@@ -46,7 +46,7 @@
 			<restrict>
 				<archives>
 					<zips>
-						<fileset dir="${dir.lib}" includes="*" />
+						<fileset dir="${dir.lib}" includes="**/**" />
 					</zips>
 				</archives>
 			</restrict>
