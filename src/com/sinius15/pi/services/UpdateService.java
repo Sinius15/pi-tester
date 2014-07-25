@@ -36,9 +36,6 @@ public class UpdateService extends Service {
 	}
 	
 	@Override
-	public void close() {}
-	
-	@Override
 	public String getName() {
 		return "Updater";
 	}

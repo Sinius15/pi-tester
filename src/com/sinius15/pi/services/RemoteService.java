@@ -51,9 +51,6 @@ public class RemoteService extends Service {
 		return true;
 	}
 	
-	@Override
-	public void close() {}
-	
 	public void handleInput(char in) {
 		int button = 1;
 		mainLoop: for (char[] d2 : things2d) {

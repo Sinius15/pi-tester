@@ -6,7 +6,9 @@ public abstract class Service implements Closeable{
 	
 	public abstract boolean start();
 	
-	public abstract void close();
+	public void close(){
+		isRunning = false;
+	};
 	
 	public abstract String getName();
 	

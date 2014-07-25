@@ -31,6 +31,7 @@ public class SocketService extends Service implements Runnable{
 		} catch (IOException e) {
 			
 		}
+		isRunning = false;
 	}
 
 	@Override

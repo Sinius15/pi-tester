@@ -38,7 +38,7 @@ public class PiServer {
 		
 		while (!isCloseRequested) {
 			for (Service service : services) {
-				if (service.isRunning == false) {
+				if (!service.isRunning) {
 					if (service.start() == true) {
 						service.isRunning = true;
 						Logger.log("Started " + service.getName() + "!");

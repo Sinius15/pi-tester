@@ -30,6 +30,7 @@ public class WebsiteService extends Service {
 	@Override
 	public void close() {
 		server.stop(0);
+		isRunning = false;
 	}
 
 	@Override
