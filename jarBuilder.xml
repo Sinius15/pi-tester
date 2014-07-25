@@ -15,7 +15,7 @@
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-example.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-service.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/jline-1.0/jline-1.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v2.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v3.0.jar"/>
         </jar>
         <jar destfile="updater.jar" filesetmanifest="mergewithoutmain">
             <manifest>
@@ -29,7 +29,7 @@
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-example.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-service.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="libs/jline-1.0/jline-1.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v2.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v3.0.jar"/>
         </jar>
     </target>
 </project>
