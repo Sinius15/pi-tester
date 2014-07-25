@@ -1,35 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project pi">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
-    <target name="create_run_jar">
-        <jar destfile="pi.jar" filesetmanifest="mergewithoutmain">
-            <manifest>
-                <attribute name="Main-Class" value="com.sinius15.pi.PiServer"/>
-                <attribute name="Class-Path" value="."/>
-            </manifest>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-gpio-extension.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-device.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-core.jar"/>
-            <fileset dir="bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-example.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-service.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/jline-1.0/jline-1.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v3.0.jar"/>
-        </jar>
-        <jar destfile="updater.jar" filesetmanifest="mergewithoutmain">
-            <manifest>
-                <attribute name="Main-Class" value="com.sinius15.updater.Updater"/>
-                <attribute name="Class-Path" value="."/>
-            </manifest>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-gpio-extension.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-device.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-core.jar"/>
-            <fileset dir="bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-example.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/pi4j/pi4j-service.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/jline-1.0/jline-1.0.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="libs/Java-Launchpad-Library_v3.0.jar"/>
-        </jar>
-    </target>
+<project basedir="." default="main">
+
+	<target name="main">
+
+		<!-- Creatign Variables  -->
+		<property name="dir.lib" value="libs" />
+		<property name="dir.src.orgin" value="src" />
+		<property name="dir.src.replaced" value="src2" />
+		<property name="dir.build" value="bin" />
+		<tstamp>
+			<format property="current.time" pattern="yyyyMMddHHmmss" />
+		</tstamp>
+
+		<path id="jars">
+			<fileset dir="libs" includes="**/*.jar" />
+		</path>
+
+		<!-- Make required Directorys -->
+		<mkdir dir="${dir.build}" />
+		<mkdir dir="${dir.src.replaced}" />
+
+		<!-- Copy src folder to new src folder -->
+		<copy todir="${dir.src.replaced}">
+			<fileset dir="${dir.src.orgin}" />
+		</copy>
+		
+		<!-- replace all @DATE@ with version number -->
+		<replace dir="${dir.src.replaced}" token="@DATE@" value="${current.time}">
+			<include name="*" />
+		</replace>
+		
+		<!-- copy new version.txt file to root dir so github can see it! -->
+		<copyfile src="src2/version.txt" dest="version.txt"/>
+		
+		<!-- comopile all code to bin folder -->
+		<javac destdir="${dir.build}" srcdir="${dir.src.replaced}" classpathref="jars" includeantruntime="false" />
+
+		<!-- Create pi.jar -->
+		<jar destfile="pi.jar" filesetmanifest="mergewithoutmain">
+			<fileset dir="${dir.build}" />
+			<manifest>
+				<attribute name="Main-Class" value="com.sinius15.pi.PiServer" />
+			</manifest>
+			<restrict>
+				<archives>
+					<zips>
+						<fileset dir="${dir.lib}" includes="*" />
+					</zips>
+				</archives>
+			</restrict>
+		</jar>
+
+		<!-- Create updater.jar -->
+		<jar destfile="updater.jar" filesetmanifest="mergewithoutmain">
+			<fileset dir="${dir.build}" />
+			<manifest>
+				<attribute name="Main-Class" value="com.sinius15.updater.Updater" />
+			</manifest>
+			<restrict>
+				<archives>
+					<zips>
+						<fileset dir="${dir.lib}" includes="*" />
+					</zips>
+				</archives>
+			</restrict>
+		</jar>
+
+		<!-- Clean unnessesary folders -->
+		<delete dir="${dir.build}" />
+		<delete dir="${dir.src.replaced}" />
+
+	</target>
 </project>

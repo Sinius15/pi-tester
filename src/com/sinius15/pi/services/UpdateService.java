@@ -19,8 +19,8 @@ public class UpdateService extends Service {
 	@Override
 	public boolean start() {
 		try {
-			String curVersion = WebUtil.getWebContent(new URL("https://raw.githubusercontent.com/Sinius15/pi-tester/master/latestVersion.txt")).trim();
-			if(isLogged == false){
+			String curVersion = WebUtil.getWebContent(new URL("https://raw.githubusercontent.com/Sinius15/pi-tester/master/version.txt")).trim();
+			if(isLogged == false){ 
 				Logger.log("Current version: " + curVersion);
 				isLogged = true;
 			}
