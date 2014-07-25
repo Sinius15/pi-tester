@@ -34,7 +34,7 @@ public class PiServer {
 		services.add(new LaunchpadService());
 		services.add(new UpdateService());
 		
-		Logger.log("Adding Services done");
+		Logger.log("Adding Services done"); 
 		
 		while (!isCloseRequested) {
 			for (Service service : services) {
