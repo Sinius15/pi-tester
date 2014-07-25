@@ -27,7 +27,7 @@
 		
 		<!-- replace all @DATE@ with version number -->
 		<replace dir="${dir.src.replaced}" token="@DATE@" value="${current.time}">
-			<include name="*" />
+			<include name="**/**" />
 		</replace>
 		
 		<!-- copy new version.txt file to root dir so github can see it! -->
@@ -41,6 +41,7 @@
 			<fileset dir="${dir.build}" />
 			<manifest>
 				<attribute name="Main-Class" value="com.sinius15.pi.PiServer" />
+				<attribute name="Class-Path" value="."/>
 			</manifest>
 			<restrict>
 				<archives>
@@ -51,7 +52,7 @@
 			</restrict>
 		</jar>
 
-		<!-- Create updater.jar -->
+		<!-- Create updater.jar --> 
 		<jar destfile="updater.jar" filesetmanifest="mergewithoutmain">
 			<fileset dir="${dir.build}" />
 			<manifest>
